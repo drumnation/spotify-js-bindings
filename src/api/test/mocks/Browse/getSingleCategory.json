@@ -1,0 +1,12 @@
+{
+  "href": "https://api.spotify.com/v1/browse/categories/roots",
+  "icons": [
+      {
+          "height": null,
+          "url": "https://t.scdn.co/images/7fe0f2c9c91f45a3b6bae49d298201a4.jpeg",
+          "width": null
+      }
+  ],
+  "id": "roots",
+  "name": "Folk & Acoustic"
+}

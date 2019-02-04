@@ -1,0 +1,77 @@
+{
+  "name": "spotify-js-bindings",
+  "version": "0.0.1",
+  "description": "Javascript bindings for Spotify",
+  "license": "MIT",
+  "repository": "diegohaz/nod",
+  "main": "dist/index.js",
+  "author": {
+    "name": "David Mieloch",
+    "email": "davidmieloch@gmail.com",
+    "url": "https://github.com/drumnation"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "babel src -d dist",
+    "clean": "rimraf dist",
+    "coverage": "npm test -- --coverage",
+    "docs": "documentation readme src --section=API",
+    "flow": "flow check",
+    "flowbuild": "flow-copy-source src dist",
+    "lint": "eslint .",
+    "postcoverage": "opn coverage/lcov-report/index.html",
+    "postdocs": "git add README.md",
+    "postpublish": "git push origin master --follow-tags",
+    "prebuild": "npm run docs && npm run clean && npm run flowbuild",
+    "preversion": "npm run lint && npm test && npm run build",
+    "start": "babel-node ./src/index.js",
+    "test": "jest",
+    "version": "standard-changelog && git add CHANGELOG.md"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "keywords": [
+    "generator-nod"
+  ],
+  "dependencies": {
+    "isomorphic-fetch": "^2.2.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.2.3",
+    "@babel/core": "7.2.2",
+    "@babel/plugin-proposal-class-properties": "7.3.0",
+    "@babel/preset-env": "7.3.1",
+    "@babel/preset-flow": "7.0.0",
+    "babel-eslint": "10.0.1",
+    "babel-jest": "24.0.0",
+    "documentation": "9.1.1",
+    "eslint": "5.12.1",
+    "eslint-config-airbnb-base": "13.1.0",
+    "eslint-config-prettier": "4.0.0",
+    "eslint-plugin-flowtype": "3.2.1",
+    "eslint-plugin-flowtype-errors": "3.6.0",
+    "eslint-plugin-import": "2.15.0",
+    "eslint-plugin-prettier": "3.0.1",
+    "flow-bin": "0.91.0",
+    "flow-copy-source": "2.0.2",
+    "husky": "1.3.1",
+    "jest": "24.0.0",
+    "lint-staged": "8.1.1",
+    "opn-cli": "4.0.0",
+    "prettier": "1.16.1",
+    "rimraf": "2.6.3",
+    "standard-changelog": "2.0.6"
+  }
+}
