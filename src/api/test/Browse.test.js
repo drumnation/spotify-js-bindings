@@ -1,4 +1,4 @@
-import { browse } from "../index";
+import { browse } from "../../index";
 import getAllCategories from "./mocks/Browse/getAllCategories.json";
 import getSingleCategory from "./mocks/Browse/getSingleCategory.json";
 import getCategoryPlaylists from "./mocks/Browse/getCategoryPlaylists.json";
