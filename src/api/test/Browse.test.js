@@ -9,10 +9,12 @@ describe("Browse API tests", () => {
     const singleCategory = await browse.getASingleBrowseCategory("roots");
     expect(singleCategory).toHaveProperty("id");
   });
+
   test("Get Category Playlists", async () => {
     const categoryPlaylists = await browse.getACategorysPlaylists("roots");
     expect(categoryPlaylists).toHaveProperty("playlists");
   });
+
   test("Get Reccomendations Based on Seeds", async () => {
     const reccomendationsOptions = {
       market: "ES"
@@ -29,5 +31,33 @@ describe("Browse API tests", () => {
       reccomendationsOptions
     );
     expect(reccomendations).toHaveProperty("seeds");
+  });
+});
+
+describe("Browse - Bad Data Should Error Tests", () => {
+  test("Get A Single Category -> Bad Data Error", async () => {
+    const singleCategory = await browse.getASingleBrowseCategory("1234567");
+    expect(singleCategory).toHaveProperty("error");
+  });
+  test("Get Category Playlists -> Bad Data Error", async () => {
+    const categoryPlaylists = await browse.getACategorysPlaylists("1234567");
+    expect(categoryPlaylists).toHaveProperty("error");
+  });
+  test("Get Reccomendations Based on Seeds -> Bad Data Error", async () => {
+    const reccomendationsOptions = {
+      market: "ES"
+    };
+    const limit = 10;
+    const seedArtists = "";
+    const seedGenres = "";
+    const seedTracks = "";
+    const reccomendations = await browse.getReccomendations(
+      limit,
+      seedArtists,
+      seedGenres,
+      seedTracks,
+      reccomendationsOptions
+    );
+    expect(reccomendations).toHaveProperty("error");
   });
 });
