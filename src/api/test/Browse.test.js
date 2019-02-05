@@ -11,7 +11,7 @@ describe("Browse API tests", () => {
   });
 
   test("Get Category Playlists", async () => {
-    const categoryPlaylists = await browse.getACategorysPlaylists("roots");
+    const categoryPlaylists = await browse.getCategoryPlaylists("roots");
     expect(categoryPlaylists).toHaveProperty("playlists");
   });
 

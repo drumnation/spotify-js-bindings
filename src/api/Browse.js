@@ -37,7 +37,7 @@ export const getASingleBrowseCategory = async (categoryId, params) => {
 };
 
 // Get a Category's Playlists
-export const getACategorysPlaylists = async (categoryId, params) => {
+export const getCategoryPlaylists = async (categoryId, params) => {
   let url = `${host}/browse/categories/${categoryId}/playlists`;
   if (hasOptionalParams(params)) {
     url += createQueryString(params);
@@ -76,6 +76,18 @@ export const getReccomendations = async (
     return json;
   } catch (err) {
     console.log("getReccomendationsBasedOnSeeds", err);
+  }
+};
+
+// Get Available Genre Seeds
+export const getAvailableGenreSeeds = async () => {
+  const url = `${host}/recommendations/available-genre-seeds`;
+  try {
+    const response = await fetch(url, options);
+    const json = response.json();
+    return json;
+  } catch (err) {
+    console.log("getAvailableGenreSeeds", err);
   }
 };
 
