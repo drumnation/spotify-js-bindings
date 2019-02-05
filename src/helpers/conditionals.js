@@ -1,3 +1,12 @@
 const hasOptionalParams = params => params !== undefined;
 
-export { hasOptionalParams };
+const isJsonString = str => {
+  try {
+    JSON.parse(str);
+  } catch (e) {
+    return false;
+  }
+  return true;
+};
+
+export { hasOptionalParams, isJsonString };

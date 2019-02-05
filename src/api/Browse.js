@@ -1,6 +1,7 @@
 import fetch from "isomorphic-fetch";
-import { hasOptionalParams } from "../helpers/conditionals";
+
 import { host, createFetchOptions } from "../config";
+import { hasOptionalParams } from "../helpers/conditionals";
 import createQueryString from "../helpers/query";
 
 const options = createFetchOptions("GET");
@@ -9,7 +10,7 @@ const options = createFetchOptions("GET");
 export const getAllCategories = async params => {
   let url = `${host}/browse/categories`;
   if (hasOptionalParams(params)) {
-    url = createQueryString(params);
+    url += createQueryString(params);
   }
   try {
     const response = await fetch(url, options);
@@ -24,7 +25,7 @@ export const getAllCategories = async params => {
 export const getASingleBrowseCategory = async (categoryId, params) => {
   let url = `${host}/browse/categories/${categoryId}`;
   if (hasOptionalParams(params)) {
-    url = createQueryString(params);
+    url += createQueryString(params);
   }
   try {
     const response = await fetch(url, options);
@@ -39,7 +40,7 @@ export const getASingleBrowseCategory = async (categoryId, params) => {
 export const getACategorysPlaylists = async (categoryId, params) => {
   let url = `${host}/browse/categories/${categoryId}/playlists`;
   if (hasOptionalParams(params)) {
-    url = createQueryString(params);
+    url += createQueryString(params);
   }
   try {
     const response = await fetch(url, options);
@@ -51,10 +52,23 @@ export const getACategorysPlaylists = async (categoryId, params) => {
 };
 
 // Get Recommendations Based on Seeds
-export const getReccomendationsBasedOnSeeds = async params => {
+export const getReccomendations = async (
+  limit,
+  seedArtists,
+  seedGenres,
+  seedTracks,
+  params
+) => {
+  const mergedParams = {
+    ...params,
+    limit,
+    seedArtists,
+    seedGenres,
+    seedTracks
+  };
   let url = `${host}/recommendations`;
-  if (hasOptionalParams(params)) {
-    url = createQueryString(params);
+  if (hasOptionalParams(mergedParams)) {
+    url += createQueryString(mergedParams);
   }
   try {
     const response = await fetch(url, options);
