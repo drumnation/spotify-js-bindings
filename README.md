@@ -39,7 +39,7 @@ You will receive a `JSON` `error` `object` with a `401` `unauthorized` message b
 
 ***
 
-### [Browser](#Browser)
+### [Browse](#Browse)
 
 ***
 
@@ -65,7 +65,7 @@ Functions that do `not` have `required` parameters can be executed `without` `ar
 
 ---
 
-### **Browser**
+### **Browse**
 
 ---
 #### Get All Categories
