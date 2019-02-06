@@ -114,11 +114,11 @@ Recommendations are generated based on the available information for a given see
 For artists and tracks that are very new or obscure there might not be enough data to generate a list of tracks.
 
 ```js
-const limit = 10;
 const seedArtists = "4NHQUGzhtTLFvgF5SZesLK";
 const seedGenres = "classical,country";
 const seedTracks = "0c6xIDDpzE81m2q797ordA";
 const params = {
+  limit: 10,
   market: "ES",
   min_acousticness: 0,
   max_acousticness: 1,
@@ -164,7 +164,6 @@ const params = {
   target_valence: 0.309
 };
 const reccomendations = await browse.getReccomendations(
-  limit,
   seedArtists,
   seedGenres,
   seedTracks,

@@ -53,7 +53,6 @@ export const getCategoryPlaylists = async (categoryId, params) => {
 
 // Get Recommendations Based on Seeds
 export const getReccomendations = async (
-  limit,
   seedArtists,
   seedGenres,
   seedTracks,
@@ -61,7 +60,6 @@ export const getReccomendations = async (
 ) => {
   const mergedParams = {
     ...params,
-    limit,
     seedArtists,
     seedGenres,
     seedTracks

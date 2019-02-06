@@ -17,12 +17,10 @@ describe("Browse API tests", () => {
     expect(categoryPlaylists).toHaveProperty("playlists");
   });
   test("Get Reccomendations Based on Seeds", async () => {
-    const limit = 10;
     const seedArtists = "4NHQUGzhtTLFvgF5SZesLK";
     const seedGenres = "classical,country";
     const seedTracks = "0c6xIDDpzE81m2q797ordA";
     const reccomendations = await browse.getReccomendations(
-      limit,
       seedArtists,
       seedGenres,
       seedTracks
@@ -84,11 +82,11 @@ describe("Browse API tests with params", () => {
     expect(categoryPlaylists).toHaveProperty("playlists");
   });
   test("Get Reccomendations Based on Seeds with params", async () => {
-    const limit = 10;
     const seedArtists = "4NHQUGzhtTLFvgF5SZesLK";
     const seedGenres = "classical,country";
     const seedTracks = "0c6xIDDpzE81m2q797ordA";
     const params = {
+      limit: 10,
       market: "ES",
       min_acousticness: 0,
       max_acousticness: 1,
@@ -134,7 +132,6 @@ describe("Browse API tests with params", () => {
       target_valence: 0.309
     };
     const reccomendations = await browse.getReccomendations(
-      limit,
       seedArtists,
       seedGenres,
       seedTracks,
