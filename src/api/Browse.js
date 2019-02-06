@@ -107,7 +107,7 @@ export const getReccomendationGenres = async () => {
 export const getAllNewReleases = async params => {
   let url = `${host}/browse/new-releases`;
   if (hasOptionalParams(params)) {
-    url = createQueryString(params);
+    url += createQueryString(params);
   }
   try {
     const response = await fetch(url, options);
@@ -122,7 +122,7 @@ export const getAllNewReleases = async params => {
 export const getAllFeaturedPlaylists = async params => {
   let url = `${host}/browse/featured-playlists`;
   if (hasOptionalParams(params)) {
-    url = createQueryString(params);
+    url += createQueryString(params);
   }
   try {
     const response = await fetch(url, options);
