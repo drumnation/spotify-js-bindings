@@ -160,10 +160,6 @@ describe("Browse API tests with params", () => {
     const allNewReleases = await getAllNewReleases(params);
     expect(allNewReleases).toHaveProperty("albums");
   });
-  test("Get All Featured Playlists", async () => {
-    const allFeaturedPlaylists = await getAllFeaturedPlaylists();
-    expect(allFeaturedPlaylists).toHaveProperty("playlists");
-  });
   test("Get All Featured Playlists with params", async () => {
     const params = {
       country: "US",

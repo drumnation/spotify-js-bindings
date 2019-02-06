@@ -3,7 +3,13 @@
 [![NPM version](https://img.shields.io/npm/v/generator-nod.svg?style=flat-square)](https://npmjs.org/package/generator-nod)
 [![Build Status](https://img.shields.io/travis/diegohaz/nod/master.svg?style=flat-square)](https://travis-ci.org/diegohaz/nod) [![Coverage Status](https://img.shields.io/codecov/c/github/diegohaz/nod/master.svg?style=flat-square)](https://codecov.io/gh/diegohaz/nod/branch/master)
 
-JavaScript bindings for Spotify.
+ES6+ JavaScript bindings for Spotify.
+
+***
+
+![spotify-logo](spotify-logo.png)
+
+***
 
 ## Install
 
@@ -11,24 +17,38 @@ JavaScript bindings for Spotify.
 $ npm install --save js-spotify-bindings
 ```
 
+***
+
 ## API
 
 #### Table of Contents
 
-- [BROWSER](#Browser)
-  1.  [Get All Categories](#Get-All-Categories)
-  2.  [Get Single Category](#Get-Single-Category)
-  3.  [Get Category Playlists](#Get-Category-Playlists)
-  4.  [Get Reccomendations Based on Seeds](#Get-Reccomendations-Based-on-Seeds)
-  5.  [Get Reccomendation Genres](#Get-Reccomendation-Genres)
-  6.  [Get Available Genre Seeds](#Get-Available-Genre-Seeds)
-  7.  [Get All New Releases](#Get-All-New-Releases)
-  8.  [Get All Featured Playlists](#Get-All-Featured-Playlists)
+***
+
+### [Browser](#Browser)
+
+***
+
+1. [Get All Categories](#Get-All-Categories)
+2. [Get Single Category](#Get-Single-Category)
+3. [Get Category Playlists](#Get-Category-Playlists)
+4. [Get Reccomendations Based on Seeds](#Get-Reccomendations-Based-on-Seeds)
+5. [Get Reccomendation Genres](#Get-Reccomendation-Genres)
+6. [Get Available Genre Seeds](#Get-Available-Genre-Seeds)
+7. [Get All New Releases](#Get-All-New-Releases)
+8. [Get All Featured Playlists](#Get-All-Featured-Playlists)
+
+---
+
+## Instructions
+
+When creating your query data, the main `arguments` are `required` elements, `params` are `optional` properties.
+
+---
 
 ### **Browser**
 
-Main `arguments` are `required` elements. \*`params` are `optional` properties.
-
+---
 #### Get All Categories
 
 Get a list of categories used to tag items in Spotify (on, for example, the Spotify player’s “Browse” tab).
@@ -46,6 +66,8 @@ const allCategories = await getAllCategories(params);
 ##### Response
 
 `JSON Object` with a `categories field` and an `array` of `category objects` (wrapped in a `paging object`).
+
+---
 
 #### Get Single Category
 
@@ -67,6 +89,8 @@ const aSingleBrowseCategory = await browse.getASingleBrowseCategory(
 
 A `category object` in `JSON` format.
 
+---
+
 #### Get Category Playlists
 
 Get a list of Spotify playlists tagged with a particular category.
@@ -76,6 +100,12 @@ const categoryId = "metal";
 
 const categoryPlaylists = await browse.getCategoryPlaylists(categoryId, params);
 ```
+
+##### Response
+
+An `array` of simplified `playlist objects` (wrapped in a `paging object`) in `JSON` format.
+
+---
 
 #### Get Reccomendations Based on Seeds
 
@@ -144,7 +174,9 @@ const reccomendations = await browse.getReccomendations(
 
 ##### Response
 
-contains a `recommendations` response `object` in `JSON` format.
+A `recommendations` response `object` in `JSON` format.
+
+---
 
 #### Get Reccomendation Genres
 
@@ -159,11 +191,19 @@ const params = {
 const reccomendationGenres = await browse.getReccomendationGenres(params);
 ```
 
+##### Response
+
+A `recommendations` response `object` in `JSON` format.
+
+---
+
 #### Get Available Genre Seeds
 
 ```js
 const availableGenreSeeds = await browse.getAvailableGenreSeeds();
 ```
+
+---
 
 #### Get All New Releases
 
@@ -172,6 +212,12 @@ Get a list of new album releases featured in Spotify (shown, for example, on a S
 ```js
 const allNewReleases = await getAllNewReleases();
 ```
+
+##### Response
+
+A `message` and an `albums object`. The `albums object` contains an `array` of simplified `album objects` (wrapped in a `paging object`) in `JSON` format.
+
+---
 
 #### Get All Featured Playlists
 
@@ -185,6 +231,10 @@ const allFeaturedPlaylists = await getAllFeaturedPlaylists();
 
 The `playlists object` contains an `array` of simplified `playlist objects` (wrapped in a `paging object`) in `JSON` format.
 
+---
+
 ## License
 
 MIT © David Mieloch
+
+---
