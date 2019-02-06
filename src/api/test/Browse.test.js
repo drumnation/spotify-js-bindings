@@ -45,47 +45,47 @@ describe("Browse API tests", () => {
   });
 });
 
-describe("Browse API tests with params", () => {
-  test("Get All Categories with params", async () => {
-    const params = {
+describe("Browse API tests with optional", () => {
+  test("Get All Categories with optional", async () => {
+    const optional = {
       country: "MX",
       locale: "es_MX", // meaning “Spanish (Mexico)”
       limit: 10,
       offset: 100
     };
-    const categories = await browse.getAllCategories(params);
+    const categories = await browse.getAllCategories(optional);
     expect(categories).toHaveProperty("categories");
   });
-  test("Get A Single Category with params", async () => {
+  test("Get A Single Category with optional", async () => {
     const categoryId = "dinner";
-    const params = {
+    const optional = {
       country: "SE",
       locale: "sv_SE"
     };
     const singleCategory = await browse.getASingleBrowseCategory(
       categoryId,
-      params
+      optional
     );
     expect(singleCategory).toHaveProperty("id");
   });
-  test("Get Category Playlists with params", async () => {
+  test("Get Category Playlists with optional", async () => {
     const categoryId = "dinner";
-    const params = {
+    const optional = {
       country: "SE",
       limit: 10,
       offset: 5
     };
     const categoryPlaylists = await browse.getCategoryPlaylists(
       categoryId,
-      params
+      optional
     );
     expect(categoryPlaylists).toHaveProperty("playlists");
   });
-  test("Get Reccomendations Based on Seeds with params", async () => {
+  test("Get Reccomendations Based on Seeds with optional", async () => {
     const seedArtists = "4NHQUGzhtTLFvgF5SZesLK";
     const seedGenres = "classical,country";
     const seedTracks = "0c6xIDDpzE81m2q797ordA";
-    const params = {
+    const optional = {
       limit: 10,
       market: "ES",
       minAcousticness: 0,
@@ -135,37 +135,37 @@ describe("Browse API tests with params", () => {
       seedArtists,
       seedGenres,
       seedTracks,
-      params
+      optional
     );
     expect(reccomendations).toHaveProperty("seeds");
   });
-  test("Get Reccomendation Genres with params", async () => {
-    const params = {
+  test("Get Reccomendation Genres with optional", async () => {
+    const optional = {
       country: "US",
       limit: 10,
       offset: 5
     };
-    const reccomendationGenres = await browse.getReccomendationGenres(params);
+    const reccomendationGenres = await browse.getReccomendationGenres(optional);
     expect(reccomendationGenres).toHaveProperty("genres");
   });
-  test("Get All New Releases with params", async () => {
-    const params = {
+  test("Get All New Releases with optional", async () => {
+    const optional = {
       country: "US",
       limit: 10,
       offset: 5
     };
-    const allNewReleases = await getAllNewReleases(params);
+    const allNewReleases = await getAllNewReleases(optional);
     expect(allNewReleases).toHaveProperty("albums");
   });
-  test("Get All Featured Playlists with params", async () => {
-    const params = {
+  test("Get All Featured Playlists with optional", async () => {
+    const optional = {
       country: "US",
       locale: "sv_SE",
       timestamp: "2014-10-23T09:00:00",
       limit: 10,
       offset: 5
     };
-    const allFeaturedPlaylists = await getAllFeaturedPlaylists(params);
+    const allFeaturedPlaylists = await getAllFeaturedPlaylists(optional);
     expect(allFeaturedPlaylists).toHaveProperty("playlists");
   });
 });

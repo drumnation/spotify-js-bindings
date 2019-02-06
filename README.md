@@ -42,7 +42,7 @@ $ npm install --save js-spotify-bindings
 
 ## Instructions
 
-When creating your query data, the main `arguments` are `required` elements, `params` are `optional` properties.
+When creating your query data, the main `arguments` are `required` parameters, `optional` are optional query parameters.
 
 ---
 
@@ -54,13 +54,13 @@ When creating your query data, the main `arguments` are `required` elements, `pa
 Get a list of categories used to tag items in Spotify (on, for example, the Spotify player’s “Browse” tab).
 
 ```js
-const params = {
+const optional = {
   country: "MX",
   locale: "es_MX",
   limit: 10,
   offset: 100
 };
-const allCategories = await getAllCategories(params);
+const allCategories = await getAllCategories(optional);
 ```
 
 ##### Response
@@ -77,13 +77,13 @@ Get a single category used to tag items in Spotify (on, for example, the Spotify
 
 ```js
 const categoryId = "dinner";
-const params = {
+const optional = {
   country: "SE",
   locale: "sv_SE"
 };
 const aSingleBrowseCategory = await browse.getASingleBrowseCategory(
   categoryId,
-  params
+  optional
 );
 ```
 
@@ -102,7 +102,7 @@ Get a list of Spotify playlists tagged with a particular category.
 ```js
 const categoryId = "metal";
 
-const categoryPlaylists = await browse.getCategoryPlaylists(categoryId, params);
+const categoryPlaylists = await browse.getCategoryPlaylists(categoryId, optional);
 ```
 
 ##### Response
@@ -123,7 +123,7 @@ For artists and tracks that are very new or obscure there might not be enough da
 const seedArtists = "4NHQUGzhtTLFvgF5SZesLK";
 const seedGenres = "classical,country";
 const seedTracks = "0c6xIDDpzE81m2q797ordA";
-const params = {
+const optional = {
   limit: 10,
   market: "ES",
   minAcousticness: 0,
@@ -173,7 +173,7 @@ const reccomendations = await browse.getReccomendations(
   seedArtists,
   seedGenres,
   seedTracks,
-  params
+  optional
 );
 ```
 
@@ -190,12 +190,12 @@ A `recommendations` response `object` in `JSON` format.
 Retrieve a list of available genres seed parameter values for recommendations.
 
 ```js
-const params = {
+const optional = {
   country: "US",
   limit: 10,
   offset: 5
 };
-const reccomendationGenres = await browse.getReccomendationGenres(params);
+const reccomendationGenres = await browse.getReccomendationGenres(optional);
 ```
 
 ##### Response

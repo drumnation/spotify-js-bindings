@@ -7,10 +7,10 @@ import createQueryString from "../helpers/query";
 const options = createFetchOptions("GET");
 
 // Get All Categories
-export const getAllCategories = async params => {
+export const getAllCategories = async optional => {
   let url = `${host}/browse/categories`;
-  if (hasOptionalParams(params)) {
-    url += createQueryString(params);
+  if (hasOptionalParams(optional)) {
+    url += createQueryString(optional);
   }
   try {
     const response = await fetch(url, options);
@@ -22,10 +22,10 @@ export const getAllCategories = async params => {
 };
 
 // Get a Single Browse Category
-export const getASingleBrowseCategory = async (categoryId, params) => {
+export const getASingleBrowseCategory = async (categoryId, optional) => {
   let url = `${host}/browse/categories/${categoryId}`;
-  if (hasOptionalParams(params)) {
-    url += createQueryString(params);
+  if (hasOptionalParams(optional)) {
+    url += createQueryString(optional);
   }
   try {
     const response = await fetch(url, options);
@@ -37,10 +37,10 @@ export const getASingleBrowseCategory = async (categoryId, params) => {
 };
 
 // Get a Category's Playlists
-export const getCategoryPlaylists = async (categoryId, params) => {
+export const getCategoryPlaylists = async (categoryId, optional) => {
   let url = `${host}/browse/categories/${categoryId}/playlists`;
-  if (hasOptionalParams(params)) {
-    url += createQueryString(params);
+  if (hasOptionalParams(optional)) {
+    url += createQueryString(optional);
   }
   try {
     const response = await fetch(url, options);
@@ -56,17 +56,17 @@ export const getReccomendations = async (
   seedArtists,
   seedGenres,
   seedTracks,
-  params
+  optional
 ) => {
-  const mergedParams = {
-    ...params,
+  const mergedOptional = {
+    ...optional,
     seedArtists,
     seedGenres,
     seedTracks
   };
   let url = `${host}/recommendations`;
-  if (hasOptionalParams(mergedParams)) {
-    url += createQueryString(mergedParams);
+  if (hasOptionalParams(mergedOptional)) {
+    url += createQueryString(mergedOptional);
   }
   try {
     const response = await fetch(url, options);
@@ -102,10 +102,10 @@ export const getReccomendationGenres = async () => {
 };
 
 // Get All New Releases
-export const getAllNewReleases = async params => {
+export const getAllNewReleases = async optional => {
   let url = `${host}/browse/new-releases`;
-  if (hasOptionalParams(params)) {
-    url += createQueryString(params);
+  if (hasOptionalParams(optional)) {
+    url += createQueryString(optional);
   }
   try {
     const response = await fetch(url, options);
@@ -117,10 +117,10 @@ export const getAllNewReleases = async params => {
 };
 
 // Get All Featured Playlists
-export const getAllFeaturedPlaylists = async params => {
+export const getAllFeaturedPlaylists = async optional => {
   let url = `${host}/browse/featured-playlists`;
-  if (hasOptionalParams(params)) {
-    url += createQueryString(params);
+  if (hasOptionalParams(optional)) {
+    url += createQueryString(optional);
   }
   try {
     const response = await fetch(url, options);
