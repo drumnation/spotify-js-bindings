@@ -17,6 +17,20 @@ ES6+ JavaScript bindings for Spotify.
 $ npm install --save js-spotify-bindings
 ```
 
+### Retrieving and Setting Access Token
+
+Retrieve your Spotify Developer `OAuth Token`. You can generate a `temporary` `token` with [Spotify's API console](https://developer.spotify.com/console/get-album-tracks/).
+
+When your app `first` `loads`, use this `function` to `set` your `auth` `token`.
+
+*** NOT IMPLEMENTED YET ***
+
+```js
+setSpotifyOauthToken("BQBrnKyWwLDnsbrnw9J3xnCSR-1jlyXhtFrgVm5dWnWlWoaqj1bx0ZqAlarYSO4QSQgCBjt60ynmrT27n5RJdyfJNkdwNwTyXnIQNLjvhIxVdhk1sUiHjaqGzHe4tST7dijYu1Z3FyZVv_uzIcqPn_sY-p7kPXTHMatFOpVONtUr6Sc3kEZva1Nmy58B8jVVlQVOWZ0efwnne3TenIbZ2bcfHpmvm6j-B-NCb_kB32UgyMHMlsAxMssYIq8SY5SGwaRfmFZFlpTBOhrZWw");
+```
+
+You will receive a `JSON` `error` `object` with a `401` `unauthorized` message back from Spotify if your `temporary` `key` `expires` or you `do` `not` `set` `one` prior to running your API call.
+
 ***
 
 ## API
@@ -42,17 +56,6 @@ $ npm install --save js-spotify-bindings
 
 ## Instructions
 
-Retrieve your Spotify Developer `OAuth Token`. You can generate a `temporary` `token` with [Spotify's API console](https://developer.spotify.com/console/get-album-tracks/).
-
-When your app `first` `loads`, use this `function` to `set` your `auth` `token`.
-
-*** NOT IMPLEMENTED YET ***
-
-```js
-setSpotifyOauthToken("BQBrnKyWwLDnsbrnw9J3xnCSR-1jlyXhtFrgVm5dWnWlWoaqj1bx0ZqAlarYSO4QSQgCBjt60ynmrT27n5RJdyfJNkdwNwTyXnIQNLjvhIxVdhk1sUiHjaqGzHe4tST7dijYu1Z3FyZVv_uzIcqPn_sY-p7kPXTHMatFOpVONtUr6Sc3kEZva1Nmy58B8jVVlQVOWZ0efwnne3TenIbZ2bcfHpmvm6j-B-NCb_kB32UgyMHMlsAxMssYIq8SY5SGwaRfmFZFlpTBOhrZWw");
-```
-
-You will receive a `JSON` `error` `object` with a `401` `unauthorized` message back from Spotify if your `temporary` `key` `expires` or you `do` `not` `set` `one` prior to running your API call.
 
 ### About Query Arguments
 
