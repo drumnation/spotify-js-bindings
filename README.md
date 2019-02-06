@@ -67,6 +67,8 @@ const allCategories = await getAllCategories(params);
 
 `JSON Object` with a `categories field` and an `array` of `category objects` (wrapped in a `paging object`).
 
+[Spotify Developer Web API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-categories)
+
 ---
 
 #### Get Single Category
@@ -89,6 +91,8 @@ const aSingleBrowseCategory = await browse.getASingleBrowseCategory(
 
 A `category object` in `JSON` format.
 
+[Spotify Developer Web API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-a-category)
+
 ---
 
 #### Get Category Playlists
@@ -104,6 +108,8 @@ const categoryPlaylists = await browse.getCategoryPlaylists(categoryId, params);
 ##### Response
 
 An `array` of simplified `playlist objects` (wrapped in a `paging object`) in `JSON` format.
+
+[Spotify Developer Web API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-a-categories-playlists)
 
 ---
 
@@ -175,6 +181,8 @@ const reccomendations = await browse.getReccomendations(
 
 A `recommendations` response `object` in `JSON` format.
 
+[Spotify Developer Web API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-recommendations)
+
 ---
 
 #### Get Reccomendation Genres
@@ -194,6 +202,8 @@ const reccomendationGenres = await browse.getReccomendationGenres(params);
 
 A `recommendations` response `object` in `JSON` format.
 
+[Spotify Developer Web API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-recommendation-genres)
+
 ---
 
 #### Get Available Genre Seeds
@@ -201,6 +211,8 @@ A `recommendations` response `object` in `JSON` format.
 ```js
 const availableGenreSeeds = await browse.getAvailableGenreSeeds();
 ```
+
+[Spotify Developer Web API Docs](https://developer.spotify.com/console/get-available-genre-seeds/)
 
 ---
 
@@ -216,6 +228,8 @@ const allNewReleases = await getAllNewReleases();
 
 A `message` and an `albums object`. The `albums object` contains an `array` of simplified `album objects` (wrapped in a `paging object`) in `JSON` format.
 
+[Spotify Developer Web API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-new-releases)
+
 ---
 
 #### Get All Featured Playlists
@@ -229,6 +243,8 @@ const allFeaturedPlaylists = await getAllFeaturedPlaylists();
 ##### Response
 
 The `playlists object` contains an `array` of simplified `playlist objects` (wrapped in a `paging object`) in `JSON` format.
+
+[Spotify Developer Web API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-featured-playlists)
 
 ---
 
