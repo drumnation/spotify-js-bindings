@@ -1,10 +1,10 @@
 import fetch from "isomorphic-fetch";
 
-import { host, createFetchOptions } from "../config";
+import Spotify, { host } from "../config";
 import { hasOptionalParams } from "../helpers/conditionals";
 import createQueryString from "../helpers/query";
 
-const options = createFetchOptions("GET");
+const options = Spotify.createFetchOptions("GET");
 
 // Get All Categories
 export const getAllCategories = async optional => {
@@ -22,7 +22,7 @@ export const getAllCategories = async optional => {
 };
 
 // Get a Single Browse Category
-export const getASingleBrowseCategory = async (categoryId, optional) => {
+export const getSingleBrowseCategory = async (categoryId, optional) => {
   let url = `${host}/browse/categories/${categoryId}`;
   if (hasOptionalParams(optional)) {
     url += createQueryString(optional);

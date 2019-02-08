@@ -1,3 +1,5 @@
+import Spotify from "./config";
+
 import * as albums from "./api/Albums";
 import * as artists from "./api/Artists";
 import * as browse from "./api/Browse";
@@ -23,3 +25,5 @@ export {
   tracks,
   userProfile
 };
+
+export default Spotify;

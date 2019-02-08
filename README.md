@@ -1,47 +1,58 @@
-# Spotify-js-bindings
+# Spotify-js-web-api
 
 [![NPM version](https://img.shields.io/npm/v/generator-nod.svg?style=flat-square)](https://npmjs.org/package/generator-nod)
 [![Build Status](https://img.shields.io/travis/diegohaz/nod/master.svg?style=flat-square)](https://travis-ci.org/diegohaz/nod) [![Coverage Status](https://img.shields.io/codecov/c/github/diegohaz/nod/master.svg?style=flat-square)](https://codecov.io/gh/diegohaz/nod/branch/master)
 
-ES6+ JavaScript bindings for Spotify.
+Async+Await / ES6 JavaScript bindings for Spotify.
 
-***
+---
 
 ![spotify-logo](spotify-logo.png)
 
-***
+---
 
 ## Install
 
 ```sh
-$ npm install --save js-spotify-bindings
+$ npm install --save spotify-js-web-api
+```
+
+```js
+import { playlists, browse } from "spotify-js-web-api"
 ```
 
 ### Retrieving and Setting Access Token
 
-Retrieve your Spotify Developer `OAuth Token`. You can generate a `temporary` `token` with [Spotify's API console](https://developer.spotify.com/console/get-album-tracks/).
+Retrieve your Spotify Developer `OAuth Token`. You can generate a `temporary token` with [Spotify's-API-console](https://developer.spotify.com/console/get-album-tracks/)
 
-When your app `first` `loads`, use this `function` to `set` your `auth` `token`.
-
-*** NOT IMPLEMENTED YET ***
+When your app `first` `loads`, use this `function` to `set` your `auth` token.
 
 ```js
-setSpotifyOauthToken("BQBrnKyWwLDnsbrnw9J3xnCSR-1jlyXhtFrgVm5dWnWlWoaqj1bx0ZqAlarYSO4QSQgCBjt60ynmrT27n5RJdyfJNkdwNwTyXnIQNLjvhIxVdhk1sUiHjaqGzHe4tST7dijYu1Z3FyZVv_uzIcqPn_sY-p7kPXTHMatFOpVONtUr6Sc3kEZva1Nmy58B8jVVlQVOWZ0efwnne3TenIbZ2bcfHpmvm6j-B-NCb_kB32UgyMHMlsAxMssYIq8SY5SGwaRfmFZFlpTBOhrZWw");
+const token = "BQBrnKyWwLDnsbrnw9J3xnCSR-1jlyXhtFrgVm5dWnWlWoaqj1bx0ZqAlarYSO4QSQgCBjt60ynmrT27n5RJdyfJNkdwNwTyXnIQNLjvhIxVdhk1sUiHjaqGzHe4tST7dijYu1Z3FyZVv_uzIcqPn_sY-p7kPXTHMatFOpVONtUr6Sc3kEZva1Nmy58B8jVVlQVOWZ0efwnne3TenIbZ2bcfHpmvm6j-B-NCb_kB32UgyMHMlsAxMssYIq8SY5SGwaRfmFZFlpTBOhrZWw";
+Spotify.setToken(token);
 ```
 
 You will receive a `JSON` `error` `object` with a `401` `unauthorized` message back from Spotify if your `temporary` `key` `expires` or you `do` `not` `set` `one` prior to running your API call.
 
-***
+---
 
 ## API
 
 #### Table of Contents
 
-***
+---
 
-### [Browse](#Browse)
+### [Playlists API](#Playlists-API)
 
-***
+---
+
+1. [Get All Categories](#Get-All-Categories)
+
+---
+
+### [Browse API](#Browse-API)
+
+---
 
 1. [Get All Categories](#Get-All-Categories)
 2. [Get Single Category](#Get-Single-Category)
@@ -65,7 +76,34 @@ Functions that do `not` have `required` parameters can be executed `without` `ar
 
 ---
 
-### **Browse**
+### **Playlists API**
+
+---
+#### Add Tracks to a Playlist
+
+Add one or more tracks to a user’s playlist.
+
+>  The position to insert the tracks, a zero-based index. If position is omitted, the tracks will be appended to the playlist. 
+
+Tracks are added in the order they are listed in the query string or request body.
+
+```js
+const playlistId = "3cEYpjA9oz9GiPac4AsH4n";
+const optional = {
+  uris: "spotify:track:4iV5W9uYEdYUVa79Axb7Rh,spotify:track:1301WleyT98MSxVHPZCA6M",
+  position: 2
+};
+const snapshot = playlists.addTracksToPlaylist(playlistId, optional);
+```
+##### Response
+
+A `snapshot_id` in `JSON` format. The `snapshot_id` can be used to identify your playlist version in future requests.
+
+> [API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-add-tracks-to-playlist)
+
+---
+
+### **Browse API**
 
 ---
 #### Get All Categories
@@ -79,7 +117,7 @@ const optional = {
   limit: 10,
   offset: 100
 };
-const allCategories = await getAllCategories(optional);
+const allCategories = await browse.getAllCategories(optional);
 ```
 
 ##### Response
@@ -100,7 +138,7 @@ const optional = {
   country: "SE",
   locale: "sv_SE"
 };
-const aSingleBrowseCategory = await browse.getASingleBrowseCategory(
+const aSingleBrowseCategory = await browse.getSingleBrowseCategory(
   categoryId,
   optional
 );

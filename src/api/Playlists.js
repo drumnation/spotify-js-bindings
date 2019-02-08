@@ -1,4 +1,27 @@
+import fetch from "isomorphic-fetch";
+
+import Spotify, { host } from "../config";
+import { hasOptionalParams } from "../helpers/conditionals";
+import createQueryString from "../helpers/query";
+
 // Add Tracks to a Playlist
+export const addTracksToPlaylist = async (playlistId, optional) => {
+  const { uris } = optional;
+  let url = `${host}/playlists/${playlistId}/tracks`;
+  if (hasOptionalParams(optional)) {
+    url += createQueryString(optional);
+  }
+  try {
+    const options = Spotify.createFetchOptions("Post", uris);
+    const response = await fetch(url, options);
+    const json = response.json();
+    return json;
+  } catch (err) {
+    console.log("getAllCategories", err);
+  }
+};
+
+// Get All Categories
 
 // Get a Playlist
 
