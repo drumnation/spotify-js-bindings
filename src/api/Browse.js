@@ -1,4 +1,5 @@
 import spotifyFetch from "../helpers/fetch";
+
 import urls, { httpMethods } from "./urls/browse";
 
 export const getAllCategories = async optional => {
@@ -8,7 +9,8 @@ export const getAllCategories = async optional => {
         "getAllCategories",
         urls.getAllCategories,
         httpMethods.getAllCategories,
-        optional
+        optional,
+        null
       )
     );
   };
@@ -21,7 +23,8 @@ export const getSingleBrowseCategory = async (categoryId, optional) => {
         "getSingleBrowseCategory",
         urls.getSingleBrowseCategory(categoryId),
         httpMethods.getSingleBrowseCategory,
-        optional
+        optional,
+        null
       )
     );
   };
@@ -34,7 +37,8 @@ export const getCategoryPlaylists = async (categoryId, optional) => {
         "getCategoryPlaylists",
         urls.getCategoryPlaylists(categoryId),
         httpMethods.getCategoryPlaylists,
-        optional
+        optional,
+        null
       )
     );
   };
@@ -58,7 +62,8 @@ export const getReccomendations = async (
         "getCategoryPlaylists",
         urls.getReccomendations,
         httpMethods.getReccomendations,
-        mergedOptional
+        mergedOptional,
+        null
       )
     );
   };
@@ -85,7 +90,8 @@ export const getAllNewReleases = async optional => {
         "getAllNewReleases",
         urls.getAllNewReleases,
         httpMethods.getAllNewReleases,
-        optional
+        optional,
+        null
       )
     );
   };
@@ -98,7 +104,8 @@ export const getAllFeaturedPlaylists = async optional => {
         "getAllFeaturedPlaylists",
         urls.getAllFeaturedPlaylists,
         httpMethods.getAllFeaturedPlaylists,
-        optional
+        optional,
+        null
       )
     );
   };
