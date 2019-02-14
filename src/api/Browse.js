@@ -1,132 +1,105 @@
-import fetch from "isomorphic-fetch";
+import spotifyApiRequest from "../helpers/apiRequest";
+import urls, { httpMethods } from "./urls/browse";
 
-import Spotify, { host } from "../config";
-import { hasOptionalParams } from "../helpers/conditionals";
-import createQueryString from "../helpers/query";
-
-const options = Spotify.createFetchOptions("GET");
-
-// Get All Categories
 export const getAllCategories = async optional => {
-  let url = `${host}/browse/categories`;
-  if (hasOptionalParams(optional)) {
-    url += createQueryString(optional);
-  }
-  try {
-    const response = await fetch(url, options);
-    const json = response.json();
-    return json;
-  } catch (err) {
-    console.log("getAllCategories", err);
-  }
+  return async dispatch => {
+    return dispatch(
+      spotifyApiRequest(
+        "getAllCategories",
+        urls.getAllCategories,
+        httpMethods.getAllCategories,
+        optional
+      )
+    );
+  };
 };
 
-// Get a Single Browse Category
 export const getSingleBrowseCategory = async (categoryId, optional) => {
-  let url = `${host}/browse/categories/${categoryId}`;
-  if (hasOptionalParams(optional)) {
-    url += createQueryString(optional);
-  }
-  try {
-    const response = await fetch(url, options);
-    const json = response.json();
-    return json;
-  } catch (err) {
-    console.log("getASingleBrowseCategory", err);
-  }
+  return async dispatch => {
+    return dispatch(
+      spotifyApiRequest(
+        "getSingleBrowseCategory",
+        urls.getSingleBrowseCategory(categoryId),
+        httpMethods.getSingleBrowseCategory,
+        optional
+      )
+    );
+  };
 };
 
-// Get a Category's Playlists
 export const getCategoryPlaylists = async (categoryId, optional) => {
-  let url = `${host}/browse/categories/${categoryId}/playlists`;
-  if (hasOptionalParams(optional)) {
-    url += createQueryString(optional);
-  }
-  try {
-    const response = await fetch(url, options);
-    const json = response.json();
-    return json;
-  } catch (err) {
-    console.log("getACategorysPlaylists", err);
-  }
+  return async dispatch => {
+    return dispatch(
+      spotifyApiRequest(
+        "getCategoryPlaylists",
+        urls.getCategoryPlaylists(categoryId),
+        httpMethods.getCategoryPlaylists,
+        optional
+      )
+    );
+  };
 };
 
-// Get Recommendations Based on Seeds
 export const getReccomendations = async (
   seedArtists,
   seedGenres,
   seedTracks,
   optional
 ) => {
-  const mergedOptional = {
-    ...optional,
-    seedArtists,
-    seedGenres,
-    seedTracks
+  return async dispatch => {
+    const mergedOptional = {
+      ...optional,
+      seedArtists,
+      seedGenres,
+      seedTracks
+    };
+    return dispatch(
+      spotifyApiRequest(
+        "getCategoryPlaylists",
+        urls.getReccomendations,
+        httpMethods.getReccomendations,
+        mergedOptional
+      )
+    );
   };
-  let url = `${host}/recommendations`;
-  if (hasOptionalParams(mergedOptional)) {
-    url += createQueryString(mergedOptional);
-  }
-  try {
-    const response = await fetch(url, options);
-    const json = response.json();
-    return json;
-  } catch (err) {
-    console.log("getReccomendationsBasedOnSeeds", err);
-  }
 };
 
-// Get Available Genre Seeds
-export const getAvailableGenreSeeds = async () => {
-  const url = `${host}/recommendations/available-genre-seeds`;
-  try {
-    const response = await fetch(url, options);
-    const json = response.json();
-    return json;
-  } catch (err) {
-    console.log("getAvailableGenreSeeds", err);
-  }
-};
-
-// Get Recommendation Genres
 export const getReccomendationGenres = async () => {
-  const url = `${host}/recommendations/available-genre-seeds`;
-  try {
-    const response = await fetch(url, options);
-    const json = response.json();
-    return json;
-  } catch (err) {
-    console.log("getReccomendationGenres", err);
-  }
+  return async dispatch => {
+    return dispatch(
+      spotifyApiRequest(
+        "getReccomendationGenres",
+        urls.getAvailableGenreSeeds,
+        httpMethods.getReccomendationGenres,
+        null,
+        null
+      )
+    );
+  };
 };
 
-// Get All New Releases
 export const getAllNewReleases = async optional => {
-  let url = `${host}/browse/new-releases`;
-  if (hasOptionalParams(optional)) {
-    url += createQueryString(optional);
-  }
-  try {
-    const response = await fetch(url, options);
-    const json = response.json();
-    return json;
-  } catch (err) {
-    console.log("getAllNewReleases", err);
-  }
+  return async dispatch => {
+    return dispatch(
+      spotifyApiRequest(
+        "getAllNewReleases",
+        urls.getAllNewReleases,
+        httpMethods.getAllNewReleases,
+        optional
+      )
+    );
+  };
 };
 
-// Get All Featured Playlists
 export const getAllFeaturedPlaylists = async optional => {
-  let url = `${host}/browse/featured-playlists`;
-  if (hasOptionalParams(optional)) {
-    url += createQueryString(optional);
-  }
-  try {
-    const response = await fetch(url, options);
-    const json = response.json();
-    return json;
-  } catch (err) {
-    console.log("getAllNewReleases", err);
-  }
+  return async dispatch => {
+    return dispatch(
+      spotifyApiRequest(
+        "getAllFeaturedPlaylists",
+        urls.getAllFeaturedPlaylists,
+        httpMethods.getAllFeaturedPlaylists,
+        optional
+      )
+    );
+  };
 };

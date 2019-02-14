@@ -1,66 +1,101 @@
-import fetch from "isomorphic-fetch";
+import urls, { httpMethods } from "./urls/follow";
 
-import Spotify, { host } from "../config";
-import { hasOptionalParams } from "../helpers/conditionals";
-import createQueryString from "../helpers/query";
+import spotifyApiRequest from "../helpers/apiRequest";
 
-// Get Following State for Artists/Users: /v1/me/following/contains
-
-// Check if Users Follow a Playlist: /v1/playlists/{playlist_id}/followers/contains
-
-// Follow Artists or Users: /v1/me/following
-
-// Follow a Playlist
-
-export const followPlaylist = async (playlistId, optional) => {
-  const { uris } = optional;
-  let url = `${host}/playlists/${playlistId}/followers`;
-  if (hasOptionalParams(optional)) {
-    url += createQueryString(optional);
-  }
-  try {
-    const options = Spotify.createFetchOptions("Put", uris);
-    const response = await fetch(url, options);
-    const json = response.json();
-    return json;
-  } catch (err) {
-    console.log("Follow Playlist", err);
-  }
-};
-// Get User's Followed Artists: /v1/me/following
-
-export const getUsersFollowedArtists = async optional => {
-  const { uris } = optional;
-  let url = `${host}/me/following`;
-  if (hasOptionalParams(optional)) {
-    url += createQueryString(optional);
-  }
-  try {
-    const options = Spotify.createFetchOptions("Get", uris);
-    const response = await fetch(url, options);
-    const json = response.json();
-    return json;
-  } catch (err) {
-    console.log("Follow Playlist", err);
-  }
+export const getFollowingStateForArtistsUsers = optional => {
+  return async dispatch => {
+    return dispatch(
+      spotifyApiRequest(
+        "getFollowingStateForArtistsUsers",
+        urls.getFollowingStateForArtistsUsers,
+        httpMethods.getFollowingStateForArtistsUsers,
+        optional,
+        null
+      )
+    );
+  };
 };
 
-// Unfollow Artists or Users: /v1/me/following
+export const checkIfUsersFollowAPlaylist = (playlistId, optional) => {
+  return async dispatch => {
+    return dispatch(
+      spotifyApiRequest(
+        "checkIfUsersFollowAPlaylist",
+        urls.checkIfUsersFollowAPlaylist(playlistId),
+        httpMethods.checkIfUsersFollowAPlaylist,
+        optional,
+        null
+      )
+    );
+  };
+};
 
-// Unfollow Playlist: /v1/playlists/{playlist_id}/followers
+export const followArtistsOrUsers = optional => {
+  return async dispatch => {
+    return dispatch(
+      spotifyApiRequest(
+        "followArtistsOrUsers",
+        urls.followArtistsOrUsers,
+        httpMethods.followArtistsOrUsers,
+        optional,
+        null
+      )
+    );
+  };
+};
 
-export const unfollowPlaylist = async (playlistId, optional) => {
-  const { uris } = optional;
-  let url = `${host}/playlists/${playlistId}/followers`;
-  if (hasOptionalParams(optional)) {
-    url += createQueryString(optional);
-  }
-  try {
-    const options = Spotify.createFetchOptions("Delete", uris);
-    const response = await fetch(url, options);
-    const json = response.json();
-    return json;
-  } catch (err) {
-    console.log("Follow Playlist", err);
-  }
+export const followPlaylist = (playlistId, optional) => {
+  return async dispatch => {
+    return dispatch(
+      spotifyApiRequest(
+        "followPlaylist",
+        urls.followPlaylist(playlistId),
+        httpMethods.followPlaylist,
+        optional,
+        null
+      )
+    );
+  };
+};
+
+export const getUserFollowedArtists = optional => {
+  return async dispatch => {
+    return dispatch(
+      spotifyApiRequest(
+        "getUserFollowedArtists",
+        urls.getUserFollowedArtists,
+        httpMethods.getUserFollowedArtists,
+        optional,
+        null
+      )
+    );
+  };
+};
+
+export const unfollowArtistsOrUsers = optional => {
+  return async dispatch => {
+    return dispatch(
+      spotifyApiRequest(
+        "unfollowArtistsOrUsers",
+        urls.unfollowArtistsOrUsers,
+        httpMethods.unfollowArtistsOrUsers,
+        optional,
+        null
+      )
+    );
+  };
+};
+
+export const unfollowPlaylist = (playlistId, optional) => {
+  return async dispatch => {
+    return dispatch(
+      spotifyApiRequest(
+        "unfollowPlaylist",
+        urls.unfollowPlaylist(playlistId),
+        httpMethods.unfollowPlaylist,
+        optional,
+        null
+      )
+    );
+  };
 };

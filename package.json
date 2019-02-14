@@ -30,11 +30,6 @@
     "test": "jest",
     "version": "standard-changelog && git add CHANGELOG.md"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "*.js": [
       "eslint --fix",
@@ -45,7 +40,10 @@
     "generator-nod"
   ],
   "dependencies": {
-    "isomorphic-fetch": "^2.2.1"
+    "isomorphic-fetch": "^2.2.1",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/cli": "7.2.3",

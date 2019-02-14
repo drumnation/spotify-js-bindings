@@ -1,4 +1,4 @@
-import Spotify from "./config";
+import { setToken } from "./redux";
 
 import * as albums from "./api/Albums";
 import * as artists from "./api/Artists";
@@ -22,8 +22,7 @@ export {
   player,
   playlists,
   search,
+  setToken,
   tracks,
   userProfile
 };
-
-export default Spotify;

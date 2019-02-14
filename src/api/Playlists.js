@@ -1,221 +1,170 @@
-import fetch from "isomorphic-fetch";
+import spotifyApiRequest from "../helpers/apiRequest";
+import urls, { httpMethods } from "./urls/playlists";
 
-import { host } from "../config";
-import { hasOptionalParams } from "../helpers/conditionals";
-import createQueryString from "../helpers/query";
-import createFetchOptions from "../helpers/fetchOptions";
-
-// Add Tracks to a Playlist
-export const addTracksToPlaylist = async (playlistId, optional) => {
-  const { uris } = optional;
-  let url = `${host}/playlists/${playlistId}/tracks`;
-  if (hasOptionalParams(optional)) {
-    url += createQueryString(optional);
-  }
-  try {
-    const options = createFetchOptions("Post", uris);
-    const response = await fetch(url, options);
-    const json = response.json();
-    return json;
-  } catch (err) {
-    console.log("addTracksToPlaylist", err);
-  }
+export const addTracksToPlaylist = async (playlistId, uris, optional) => {
+  return async dispatch => {
+    return dispatch(
+      spotifyApiRequest(
+        "addTracksToPlaylist",
+        urls.addTracksToPlaylist(playlistId),
+        httpMethods.addTracksToPlaylist,
+        optional,
+        uris
+      )
+    );
+  };
 };
 
-// Get All Categories
-
-export const getAllCategories = async optional => {
-  const { uris } = optional;
-  let url = ``;
-  if (hasOptionalParams(optional)) {
-    url += createQueryString(optional);
-  }
-  try {
-    const options = createFetchOptions("Post", uris);
-    const response = await fetch(url, options);
-    const json = response.json();
-    return json;
-  } catch (err) {
-    console.log("getAllCategories", err);
-  }
+export const getPlaylist = async (playlistId, optional) => {
+  return async dispatch => {
+    return dispatch(
+      spotifyApiRequest(
+        "getPlaylist",
+        urls.getPlaylist(playlistId),
+        httpMethods.getPlaylist,
+        optional,
+        null
+      )
+    );
+  };
 };
 
-// Get a Playlist
-
-export const getPlaylist = async optional => {
-  const { uris } = optional;
-  let url = ``;
-  if (hasOptionalParams(optional)) {
-    url += createQueryString(optional);
-  }
-  try {
-    const options = createFetchOptions("Post", uris);
-    const response = await fetch(url, options);
-    const json = response.json();
-    return json;
-  } catch (err) {
-    console.log("getPlaylist", err);
-  }
+export const removeTracksFromPlaylist = async (playlistId, body, optional) => {
+  return async dispatch => {
+    return dispatch(
+      spotifyApiRequest(
+        "getAllCategories",
+        urls.removeTracksFromPlaylist(playlistId),
+        httpMethods.removeTracksFromPlaylist,
+        optional,
+        body
+      )
+    );
+  };
 };
 
-// Remove Tracks from a Playlist
-
-export const removeTracksFromPlaylist = async optional => {
-  const { uris } = optional;
-  let url = ``;
-  if (hasOptionalParams(optional)) {
-    url += createQueryString(optional);
-  }
-  try {
-    const options = createFetchOptions("Post", uris);
-    const response = await fetch(url, options);
-    const json = response.json();
-    return json;
-  } catch (err) {
-    console.log("removeTracksFromPlaylist", err);
-  }
+export const getPlaylistTracks = async (playlistId, optional) => {
+  return async dispatch => {
+    return dispatch(
+      spotifyApiRequest(
+        "getAllCategories",
+        urls.getPlaylistTracks(playlistId),
+        httpMethods.getPlaylistTracks,
+        optional,
+        null
+      )
+    );
+  };
 };
 
-// Get a Playlist's Tracks
-
-export const getPlaylistTracks = async optional => {
-  const { uris } = optional;
-  let url = ``;
-  if (hasOptionalParams(optional)) {
-    url += createQueryString(optional);
-  }
-  try {
-    const options = createFetchOptions("Post", uris);
-    const response = await fetch(url, options);
-    const json = response.json();
-    return json;
-  } catch (err) {
-    console.log("getPlaylistTracks", err);
-  }
+export const getPlaylistCoverImage = async (playlistId, optional) => {
+  return async dispatch => {
+    return dispatch(
+      spotifyApiRequest(
+        "getPlaylistCoverImage",
+        urls.getPlaylistCoverImage(playlistId),
+        httpMethods.getPlaylistCoverImage,
+        optional,
+        null
+      )
+    );
+  };
 };
 
-// Get a Playlist Cover Image
-
-export const getPlaylistCoverImage = async optional => {
-  const { uris } = optional;
-  let url = ``;
-  if (hasOptionalParams(optional)) {
-    url += createQueryString(optional);
-  }
-  try {
-    const options = createFetchOptions("Post", uris);
-    const response = await fetch(url, options);
-    const json = response.json();
-    return json;
-  } catch (err) {
-    console.log("getPlaylistCoverImage", err);
-  }
+export const uploadCustomPlaylistCoverImage = async (playlistId, optional) => {
+  return async dispatch => {
+    return dispatch(
+      spotifyApiRequest(
+        "uploadCustomPlaylistCoverImage",
+        urls.uploadCustomPlaylistCoverImage(playlistId),
+        httpMethods.uploadCustomPlaylistCoverImage,
+        optional,
+        null
+      )
+    );
+  };
 };
-
-// Upload a Custom Playlist Cover Image
-
-export const uploadCustomPlaylistCoverImage = async optional => {
-  const { uris } = optional;
-  let url = ``;
-  if (hasOptionalParams(optional)) {
-    url += createQueryString(optional);
-  }
-  try {
-    const options = createFetchOptions("Post", uris);
-    const response = await fetch(url, options);
-    const json = response.json();
-    return json;
-  } catch (err) {
-    console.log("uploadCustomPlaylistCoverImage", err);
-  }
-};
-
-// Change a Playlist's Details
-
-export const changePlaylistDetails = async optional => {
-  const { uris } = optional;
-  let url = ``;
-  if (hasOptionalParams(optional)) {
-    url += createQueryString(optional);
-  }
-  try {
-    const options = createFetchOptions("Post", uris);
-    const response = await fetch(url, options);
-    const json = response.json();
-    return json;
-  } catch (err) {
-    console.log("changePlaylistDetails", err);
-  }
-};
-
-// Get a List of current User's Playlists
 
 export const getListOfCurrentUserPlaylists = async optional => {
-  const { uris } = optional;
-  let url = ``;
-  if (hasOptionalParams(optional)) {
-    url += createQueryString(optional);
-  }
-  try {
-    const options = createFetchOptions("Post", uris);
-    const response = await fetch(url, options);
-    const json = response.json();
-    return json;
-  } catch (err) {
-    console.log("getListOfCurrentUserPlaylists", err);
-  }
+  return async dispatch => {
+    return dispatch(
+      spotifyApiRequest(
+        "getListOfCurrentUserPlaylists",
+        urls.getListOfCurrentUserPlaylists,
+        httpMethods.getListOfCurrentUserPlaylists,
+        optional,
+        null
+      )
+    );
+  };
 };
 
-// Replace a Playlist's Tracks
-
-export const replacePlaylistTracks = async optional => {
-  const { uris } = optional;
-  let url = ``;
-  if (hasOptionalParams(optional)) {
-    url += createQueryString(optional);
-  }
-  try {
-    const options = createFetchOptions("Post", uris);
-    const response = await fetch(url, options);
-    const json = response.json();
-    return json;
-  } catch (err) {
-    console.log("replacePlaylistTracks", err);
-  }
+export const changePlaylistDetails = async (playlistId, body, optional) => {
+  return async dispatch => {
+    return dispatch(
+      spotifyApiRequest(
+        "changePlaylistDetails",
+        urls.changePlaylistDetails(playlistId),
+        httpMethods.changePlaylistDetails,
+        optional,
+        body
+      )
+    );
+  };
 };
 
-// Create a Playlist
-
-export const createPlaylist = async optional => {
-  const { uris } = optional;
-  let url = ``;
-  if (hasOptionalParams(optional)) {
-    url += createQueryString(optional);
-  }
-  try {
-    const options = createFetchOptions("Post", uris);
-    const response = await fetch(url, options);
-    const json = response.json();
-    return json;
-  } catch (err) {
-    console.log("createPlaylist", err);
-  }
+export const getListOfUserPlaylists = (playlistId, optional) => {
+  return async dispatch => {
+    return dispatch(
+      spotifyApiRequest(
+        "getListOfUserPlaylists",
+        urls.getListOfUserPlaylists(playlistId),
+        httpMethods.getListOfUserPlaylists,
+        optional,
+        null
+      )
+    );
+  };
 };
 
-// Reorder a Playlist's Tracks
+export const reorderOrReplacePlaylistTracks = (playlistId, body, optional) => {
+  return async dispatch => {
+    return dispatch(
+      spotifyApiRequest(
+        "reorderOrReplacePlaylistTracks",
+        urls.reorderOrReplacePlaylistTracks(playlistId),
+        httpMethods.reorderOrReplacePlaylistTracks,
+        optional,
+        body
+      )
+    );
+  };
+};
 
-export const reorderPlaylistTracks = async optional => {
-  const { uris } = optional;
-  let url = ``;
-  if (hasOptionalParams(optional)) {
-    url += createQueryString(optional);
-  }
-  try {
-    const options = createFetchOptions("Post", uris);
-    const response = await fetch(url, options);
-    const json = response.json();
-    return json;
-  } catch (err) {
-    console.log("reorderPlaylistTracks", err);
-  }
+export const createPlaylist = async (playlistId, body, optional) => {
+  return async dispatch => {
+    return dispatch(
+      spotifyApiRequest(
+        "createPlaylist",
+        urls.createPlaylist(playlistId),
+        httpMethods.createPlaylist,
+        optional,
+        body
+      )
+    );
+  };
+};
+
+export const reorderPlaylistTracks = async (playlistId, body, optional) => {
+  return async dispatch => {
+    return dispatch(
+      spotifyApiRequest(
+        "reorderPlaylistTracks",
+        urls.reorderPlaylistTracks(playlistId),
+        httpMethods.reorderPlaylistTracks,
+        optional,
+        body
+      )
+    );
+  };
 };
