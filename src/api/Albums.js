@@ -1,5 +1,48 @@
-// Get Multiple Albums
+import spotifyFetch from "../helpers/fetch";
+import urls, { httpMethods } from "./urls/albums";
 
-// Get an Album
+export const getMultipleAlbums = (albumIds, optional) => {
+  return async dispatch => {
+    const mergedOptional = {
+      ids: albumIds,
+      ...optional
+    };
+    return dispatch(
+      spotifyFetch(
+        "getMultipleAlbums",
+        urls.getMultipleAlbums,
+        httpMethods.getMultipleAlbums,
+        mergedOptional,
+        null
+      )
+    );
+  };
+};
 
-// Get an Album's Tracks
+export const getAlbum = (albumId, optional) => {
+  return async dispatch => {
+    return dispatch(
+      spotifyFetch(
+        "getAlbum",
+        urls.getAlbum(albumId),
+        httpMethods.getAlbum,
+        optional,
+        null
+      )
+    );
+  };
+};
+
+export const getAnAlbumTracks = (albumId, optional) => {
+  return async dispatch => {
+    return dispatch(
+      spotifyFetch(
+        "getAnAlbumTracks",
+        urls.getAnAlbumTracks(albumId),
+        httpMethods.getAnAlbumTracks,
+        optional,
+        null
+      )
+    );
+  };
+};

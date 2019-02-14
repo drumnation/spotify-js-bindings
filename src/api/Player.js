@@ -1,25 +1,208 @@
-// Skip User’s Playback To Next Track
+import spotifyFetch from "../helpers/fetch";
+import urls, { httpMethods } from "./urls/albums";
 
-// Seek To Position In Currently Playing Track
+export const skipUserPlaybackToNextTrack = optional => {
+  return async dispatch => {
+    return dispatch(
+      spotifyFetch(
+        "skipUserPlaybackToNextTrack",
+        urls.skipUserPlaybackToNextTrack,
+        httpMethods.skipUserPlaybackToNextTrack,
+        optional,
+        null
+      )
+    );
+  };
+};
 
-// Get a User's Available Devices
+export const seekToPositionInCurrentlyPlayingTrack = (positionMs, optional) => {
+  return async dispatch => {
+    const mergedOptional = {
+      ...positionMs,
+      ...optional
+    };
+    return dispatch(
+      spotifyFetch(
+        "seekToPositionInCurrentlyPlayingTrack",
+        urls.seekToPositionInCurrentlyPlayingTrack,
+        httpMethods.seekToPositionInCurrentlyPlayingTrack,
+        mergedOptional,
+        null
+      )
+    );
+  };
+};
 
-// Toggle Shuffle For User’s Playback
+export const getUserAvailableDevices = optional => {
+  return async dispatch => {
+    return dispatch(
+      spotifyFetch(
+        "getUserAvailableDevices",
+        urls.getUserAvailableDevices,
+        httpMethods.getUserAvailableDevices,
+        optional,
+        null
+      )
+    );
+  };
+};
 
-// Transfer a User's Playback
+export const toggleShuffleForUserPlayback = (state, optional) => {
+  return async dispatch => {
+    const mergedOptional = {
+      ...state,
+      ...optional
+    };
+    return dispatch(
+      spotifyFetch(
+        "toggleShuffleForUserPlayback",
+        urls.toggleShuffleForUserPlayback,
+        httpMethods.toggleShuffleForUserPlayback,
+        mergedOptional,
+        null
+      )
+    );
+  };
+};
 
-// Get Current User's Recently Played Tracks
+export const transferUserPlayback = (deviceIds, optional) => {
+  return async dispatch => {
+    const mergedOptional = {
+      ...deviceIds,
+      ...optional
+    };
+    return dispatch(
+      spotifyFetch(
+        "transferUserPlayback",
+        urls.transferUserPlayback,
+        httpMethods.transferUserPlayback,
+        mergedOptional,
+        null
+      )
+    );
+  };
+};
 
-// Start/Resume a User's Playback
+export const getCurrentUserRecentlyPlayedTracks = optional => {
+  return async dispatch => {
+    return dispatch(
+      spotifyFetch(
+        "getCurrentUserRecentlyPlayedTracks",
+        urls.getCurrentUserRecentlyPlayedTracks,
+        httpMethods.getCurrentUserRecentlyPlayedTracks,
+        optional,
+        null
+      )
+    );
+  };
+};
 
-// Set Repeat Mode On User’s Playback
+export const startResumeUserPlayback = optional => {
+  return async dispatch => {
+    return dispatch(
+      spotifyFetch(
+        "startResumeUserPlayback",
+        urls.startResumeUserPlayback,
+        httpMethods.startResumeUserPlayback,
+        optional,
+        null
+      )
+    );
+  };
+};
 
-// Pause a User's Playback
+export const setRepeatModeOnUserPlayback = (state, optional) => {
+  return async dispatch => {
+    const mergedOptional = {
+      ...state,
+      ...optional
+    };
+    return dispatch(
+      spotifyFetch(
+        "setRepeatModeOnUserPlayback",
+        urls.setRepeatModeOnUserPlayback,
+        httpMethods.setRepeatModeOnUserPlayback,
+        mergedOptional,
+        null
+      )
+    );
+  };
+};
 
-// Skip User’s Playback To Previous Track
+export const pauseUserPlayback = optional => {
+  return async dispatch => {
+    return dispatch(
+      spotifyFetch(
+        "pauseUserPlayback",
+        urls.pauseUserPlayback,
+        httpMethods.pauseUserPlayback,
+        optional,
+        null
+      )
+    );
+  };
+};
 
-// Get Information About The User's Current Playback
+export const skipUserPlaybackToPreviousTrack = optional => {
+  return async dispatch => {
+    return dispatch(
+      spotifyFetch(
+        "skipUserPlaybackToPreviousTrack",
+        urls.skipUserPlaybackToPreviousTrack,
+        httpMethods.skipUserPlaybackToPreviousTrack,
+        optional,
+        null
+      )
+    );
+  };
+};
 
-// Get the User's Currently Playing Track
+export const getInformationAboutUserCurrentPlayback = optional => {
+  return async dispatch => {
+    return dispatch(
+      spotifyFetch(
+        "getInformationAboutUserCurrentPlayback",
+        urls.getInformationAboutUserCurrentPlayback,
+        httpMethods.getInformationAboutUserCurrentPlayback,
+        optional,
+        null
+      )
+    );
+  };
+};
 
-// Set Volume For User's Playback
+export const getUserCurrentlyPlayingTrack = (market, optional) => {
+  return async dispatch => {
+    const mergedOptional = {
+      market,
+      ...optional
+    };
+    return dispatch(
+      spotifyFetch(
+        "getUserCurrentlyPlayingTrack",
+        urls.getUserCurrentlyPlayingTrack,
+        httpMethods.getUserCurrentlyPlayingTrack,
+        mergedOptional,
+        null
+      )
+    );
+  };
+};
+
+export const setVolumeForUserPlayback = (volumePercent, optional) => {
+  return async dispatch => {
+    const mergedOptional = {
+      volumePercent,
+      ...optional
+    };
+    return dispatch(
+      spotifyFetch(
+        "setVolumeForUserPlayback",
+        urls.setVolumeForUserPlayback,
+        httpMethods.setVolumeForUserPlayback,
+        mergedOptional,
+        null
+      )
+    );
+  };
+};

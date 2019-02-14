@@ -1,15 +1,142 @@
-// Check User's Saved Albums
+import spotifyFetch from "../helpers/fetch";
+import urls, { httpMethods } from "./urls/library";
 
-// Save Tracks for User
+export const checkUserSavedAlbums = (albumIds, optional) => {
+  return async dispatch => {
+    const mergedOptional = {
+      ids: albumIds,
+      ...optional
+    };
+    return dispatch(
+      spotifyFetch(
+        "checkUserSavedAlbums",
+        urls.checkUserSavedAlbums,
+        httpMethods.checkUserSavedAlbums,
+        mergedOptional,
+        null
+      )
+    );
+  };
+};
 
-// Remove Albums for Current User
+export const saveTracksForUser = (trackIds, optional) => {
+  return async dispatch => {
+    const mergedOptional = {
+      ids: trackIds,
+      ...optional
+    };
+    return dispatch(
+      spotifyFetch(
+        "saveTracksForUser",
+        urls.saveTracksForUser,
+        httpMethods.saveTracksForUser,
+        mergedOptional,
+        null
+      )
+    );
+  };
+};
 
-// Save Albums for Current User
+export const removeAlbumsForCurrentUser = (albumIds, optional) => {
+  return async dispatch => {
+    const mergedOptional = {
+      ids: albumIds,
+      ...optional
+    };
+    return dispatch(
+      spotifyFetch(
+        "removeAlbumsForCurrentUser",
+        urls.removeAlbumsForCurrentUser,
+        httpMethods.removeAlbumsForCurrentUser,
+        mergedOptional,
+        null
+      )
+    );
+  };
+};
 
-// Remove User's Saved Tracks
+export const saveAlbumsForCurrentUser = (albumIds, optional) => {
+  return async dispatch => {
+    const mergedOptional = {
+      ids: albumIds,
+      ...optional
+    };
+    return dispatch(
+      spotifyFetch(
+        "saveAlbumsForCurrentUser",
+        urls.saveAlbumsForCurrentUser,
+        httpMethods.saveAlbumsForCurrentUser,
+        mergedOptional,
+        null
+      )
+    );
+  };
+};
 
-// Get User's Saved Albums
+export const removeUserSavedTracks = (trackIds, optional) => {
+  return async dispatch => {
+    const mergedOptional = {
+      ids: trackIds,
+      ...optional
+    };
+    return dispatch(
+      spotifyFetch(
+        "removeUserSavedTracks",
+        urls.removeUserSavedTracks,
+        httpMethods.removeUserSavedTracks,
+        mergedOptional,
+        null
+      )
+    );
+  };
+};
 
-// Get User's Saved Tracks
+export const getUserSavedAlbums = (albumIds, optional) => {
+  return async dispatch => {
+    const mergedOptional = {
+      ids: albumIds,
+      ...optional
+    };
+    return dispatch(
+      spotifyFetch(
+        "getUserSavedAlbums",
+        urls.getUserSavedAlbums,
+        httpMethods.getUserSavedAlbums,
+        mergedOptional,
+        null
+      )
+    );
+  };
+};
 
-// Check User's Saved Tracks
+export const getUserSavedTracks = optional => {
+  return async dispatch => {
+    return dispatch(
+      spotifyFetch(
+        "getUserSavedTracks",
+        urls.getUserSavedTracks,
+        httpMethods.getUserSavedTracks,
+        optional,
+        null
+      )
+    );
+  };
+};
+
+export const checkUserSavedTracks = (trackIds, optional) => {
+  return async dispatch => {
+    const mergedOptional = {
+      ids: trackIds,
+      ...optional
+    };
+    return dispatch(
+      spotifyFetch(
+        "checkUserSavedTracks",
+        urls.checkUserSavedTracks,
+        httpMethods.checkUserSavedTracks,
+        mergedOptional,
+        null
+      )
+    );
+  };
+};

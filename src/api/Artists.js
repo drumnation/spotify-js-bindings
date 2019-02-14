@@ -1,11 +1,11 @@
 import spotifyFetch from "../helpers/fetch";
-import urls, { httpMethods } from "./urls/browse";
+import urls, { httpMethods } from "./urls/artists";
 
 export const getMultipleArtists = (artistIds, optional) => {
   return async dispatch => {
     const mergedOptions = {
       ...optional,
-      ...artistIds
+      ids: artistIds
     };
     return dispatch(
       spotifyFetch(

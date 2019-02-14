@@ -1,6 +1,5 @@
-import urls, { httpMethods } from "./urls/follow";
-
 import spotifyFetch from "../helpers/fetch";
+import urls, { httpMethods } from "./urls/follow";
 
 export const getFollowingStateForArtistsUsers = optional => {
   return async dispatch => {
