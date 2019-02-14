@@ -97,10 +97,20 @@ const snapshot = playlists.addTracksToPlaylist(playlistId, optional);
 ```
 ##### Response
 
+<details><summary>json</summary>
+<p>
+
+```json
+{"snapshot_id":"JbtmHBDBAYu3/bt8BOXKjzKx3i0b6LCa/wVjyl6qQ2Yf6nFXkbmzuEa+ZI/U1yF+"}
+```
+
+</p>
+</details>
+
 A `snapshot_id` in `JSON` format. The `snapshot_id` can be used to identify your playlist version in future requests.
 
-> [API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-add-tracks-to-playlist)
 
+> [API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-add-tracks-to-playlist)
 ---
 
 ### **Browse API**
