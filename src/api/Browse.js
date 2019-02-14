@@ -52,10 +52,10 @@ export const getReccomendations = async (
 ) => {
   return async dispatch => {
     const mergedOptional = {
-      ...optional,
       seedArtists,
       seedGenres,
-      seedTracks
+      seedTracks,
+      ...optional
     };
     return dispatch(
       spotifyFetch(

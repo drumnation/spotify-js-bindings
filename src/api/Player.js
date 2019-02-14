@@ -1,4 +1,5 @@
 import spotifyFetch from "../helpers/fetch";
+
 import urls, { httpMethods } from "./urls/albums";
 
 export const skipUserPlaybackToNextTrack = optional => {
@@ -18,7 +19,7 @@ export const skipUserPlaybackToNextTrack = optional => {
 export const seekToPositionInCurrentlyPlayingTrack = (positionMs, optional) => {
   return async dispatch => {
     const mergedOptional = {
-      ...positionMs,
+      positionMs,
       ...optional
     };
     return dispatch(
@@ -50,7 +51,7 @@ export const getUserAvailableDevices = optional => {
 export const toggleShuffleForUserPlayback = (state, optional) => {
   return async dispatch => {
     const mergedOptional = {
-      ...state,
+      state,
       ...optional
     };
     return dispatch(
@@ -68,7 +69,7 @@ export const toggleShuffleForUserPlayback = (state, optional) => {
 export const transferUserPlayback = (deviceIds, optional) => {
   return async dispatch => {
     const mergedOptional = {
-      ...deviceIds,
+      deviceIds,
       ...optional
     };
     return dispatch(
@@ -114,7 +115,7 @@ export const startResumeUserPlayback = optional => {
 export const setRepeatModeOnUserPlayback = (state, optional) => {
   return async dispatch => {
     const mergedOptional = {
-      ...state,
+      state,
       ...optional
     };
     return dispatch(

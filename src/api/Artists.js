@@ -1,11 +1,12 @@
 import spotifyFetch from "../helpers/fetch";
+
 import urls, { httpMethods } from "./urls/artists";
 
 export const getMultipleArtists = (artistIds, optional) => {
   return async dispatch => {
     const mergedOptions = {
-      ...optional,
-      ids: artistIds
+      ids: artistIds,
+      ...optional
     };
     return dispatch(
       spotifyFetch(
@@ -50,7 +51,7 @@ export const getArtistAlbums = (artistId, optional) => {
 export const getArtistTopTracks = (artistId, market, optional) => {
   return async dispatch => {
     const mergedOptions = {
-      ...market,
+      market,
       ...optional
     };
     return dispatch(
