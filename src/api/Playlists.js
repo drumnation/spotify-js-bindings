@@ -1,10 +1,10 @@
-import spotifyApiRequest from "../helpers/apiRequest";
+import spotifyFetch from "../helpers/fetch";
 import urls, { httpMethods } from "./urls/playlists";
 
 export const addTracksToPlaylist = async (playlistId, uris, optional) => {
   return async dispatch => {
     return dispatch(
-      spotifyApiRequest(
+      spotifyFetch(
         "addTracksToPlaylist",
         urls.addTracksToPlaylist(playlistId),
         httpMethods.addTracksToPlaylist,
@@ -18,7 +18,7 @@ export const addTracksToPlaylist = async (playlistId, uris, optional) => {
 export const getPlaylist = async (playlistId, optional) => {
   return async dispatch => {
     return dispatch(
-      spotifyApiRequest(
+      spotifyFetch(
         "getPlaylist",
         urls.getPlaylist(playlistId),
         httpMethods.getPlaylist,
@@ -32,7 +32,7 @@ export const getPlaylist = async (playlistId, optional) => {
 export const removeTracksFromPlaylist = async (playlistId, body, optional) => {
   return async dispatch => {
     return dispatch(
-      spotifyApiRequest(
+      spotifyFetch(
         "getAllCategories",
         urls.removeTracksFromPlaylist(playlistId),
         httpMethods.removeTracksFromPlaylist,
@@ -46,7 +46,7 @@ export const removeTracksFromPlaylist = async (playlistId, body, optional) => {
 export const getPlaylistTracks = async (playlistId, optional) => {
   return async dispatch => {
     return dispatch(
-      spotifyApiRequest(
+      spotifyFetch(
         "getAllCategories",
         urls.getPlaylistTracks(playlistId),
         httpMethods.getPlaylistTracks,
@@ -60,7 +60,7 @@ export const getPlaylistTracks = async (playlistId, optional) => {
 export const getPlaylistCoverImage = async (playlistId, optional) => {
   return async dispatch => {
     return dispatch(
-      spotifyApiRequest(
+      spotifyFetch(
         "getPlaylistCoverImage",
         urls.getPlaylistCoverImage(playlistId),
         httpMethods.getPlaylistCoverImage,
@@ -74,7 +74,7 @@ export const getPlaylistCoverImage = async (playlistId, optional) => {
 export const uploadCustomPlaylistCoverImage = async (playlistId, optional) => {
   return async dispatch => {
     return dispatch(
-      spotifyApiRequest(
+      spotifyFetch(
         "uploadCustomPlaylistCoverImage",
         urls.uploadCustomPlaylistCoverImage(playlistId),
         httpMethods.uploadCustomPlaylistCoverImage,
@@ -88,7 +88,7 @@ export const uploadCustomPlaylistCoverImage = async (playlistId, optional) => {
 export const getListOfCurrentUserPlaylists = async optional => {
   return async dispatch => {
     return dispatch(
-      spotifyApiRequest(
+      spotifyFetch(
         "getListOfCurrentUserPlaylists",
         urls.getListOfCurrentUserPlaylists,
         httpMethods.getListOfCurrentUserPlaylists,
@@ -102,7 +102,7 @@ export const getListOfCurrentUserPlaylists = async optional => {
 export const changePlaylistDetails = async (playlistId, body, optional) => {
   return async dispatch => {
     return dispatch(
-      spotifyApiRequest(
+      spotifyFetch(
         "changePlaylistDetails",
         urls.changePlaylistDetails(playlistId),
         httpMethods.changePlaylistDetails,
@@ -116,7 +116,7 @@ export const changePlaylistDetails = async (playlistId, body, optional) => {
 export const getListOfUserPlaylists = (playlistId, optional) => {
   return async dispatch => {
     return dispatch(
-      spotifyApiRequest(
+      spotifyFetch(
         "getListOfUserPlaylists",
         urls.getListOfUserPlaylists(playlistId),
         httpMethods.getListOfUserPlaylists,
@@ -130,7 +130,7 @@ export const getListOfUserPlaylists = (playlistId, optional) => {
 export const reorderOrReplacePlaylistTracks = (playlistId, body, optional) => {
   return async dispatch => {
     return dispatch(
-      spotifyApiRequest(
+      spotifyFetch(
         "reorderOrReplacePlaylistTracks",
         urls.reorderOrReplacePlaylistTracks(playlistId),
         httpMethods.reorderOrReplacePlaylistTracks,
@@ -144,7 +144,7 @@ export const reorderOrReplacePlaylistTracks = (playlistId, body, optional) => {
 export const createPlaylist = async (playlistId, body, optional) => {
   return async dispatch => {
     return dispatch(
-      spotifyApiRequest(
+      spotifyFetch(
         "createPlaylist",
         urls.createPlaylist(playlistId),
         httpMethods.createPlaylist,
@@ -158,7 +158,7 @@ export const createPlaylist = async (playlistId, body, optional) => {
 export const reorderPlaylistTracks = async (playlistId, body, optional) => {
   return async dispatch => {
     return dispatch(
-      spotifyApiRequest(
+      spotifyFetch(
         "reorderPlaylistTracks",
         urls.reorderPlaylistTracks(playlistId),
         httpMethods.reorderPlaylistTracks,

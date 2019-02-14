@@ -1,21 +1,18 @@
-import host from "../../host";
-
 const urls = {
-  addTracksToPlaylist: playlistId => `${host}/playlists/${playlistId}/tracks`,
-  getPlaylist: playlistId => `${host}/playlists/${playlistId}`,
-  removeTracksFromPlaylist: playlistId =>
-    `${host}/playlists/${playlistId}/tracks`,
-  getPlaylistTracks: playlistId => `${host}/playlists/${playlistId}/tracks`,
-  getPlaylistCoverImage: playlistId => `${host}/playlists/${playlistId}/images`,
+  addTracksToPlaylist: playlistId => `/playlists/${playlistId}/tracks`,
+  getPlaylist: playlistId => `/playlists/${playlistId}`,
+  removeTracksFromPlaylist: playlistId => `/playlists/${playlistId}/tracks`,
+  getPlaylistTracks: playlistId => `/playlists/${playlistId}/tracks`,
+  getPlaylistCoverImage: playlistId => `/playlists/${playlistId}/images`,
   uploadCustomPlaylistCoverImage: playlistId =>
-    `${host}/playlists/${playlistId}/images`,
-  getListOfCurrentUserPlaylists: `${host}/me/playlists`,
-  changePlaylistDetails: playlistId => `${host}/playlists/${playlistId}`,
-  getListOfUserPlaylists: userId => `${host}/users/${userId}/playlists`,
+    `/playlists/${playlistId}/images`,
+  getListOfCurrentUserPlaylists: `/me/playlists`,
+  changePlaylistDetails: playlistId => `/playlists/${playlistId}`,
+  getListOfUserPlaylists: userId => `/users/${userId}/playlists`,
   reorderOrReplacePlaylistTracks: playlistId =>
-    `${host}/playlists/${playlistId}/tracks`,
-  createPlaylist: userId => `${host}/users/${userId}/playlists`,
-  reorderPlaylistTracks: playlistId => `${host}/playlists/${playlistId}/tracks`
+    `/playlists/${playlistId}/tracks`,
+  createPlaylist: userId => `/users/${userId}/playlists`,
+  reorderPlaylistTracks: playlistId => `/playlists/${playlistId}/tracks`
 };
 
 export const httpMethods = {

@@ -1,11 +1,11 @@
 import urls, { httpMethods } from "./urls/follow";
 
-import spotifyApiRequest from "../helpers/apiRequest";
+import spotifyFetch from "../helpers/fetch";
 
 export const getFollowingStateForArtistsUsers = optional => {
   return async dispatch => {
     return dispatch(
-      spotifyApiRequest(
+      spotifyFetch(
         "getFollowingStateForArtistsUsers",
         urls.getFollowingStateForArtistsUsers,
         httpMethods.getFollowingStateForArtistsUsers,
@@ -19,7 +19,7 @@ export const getFollowingStateForArtistsUsers = optional => {
 export const checkIfUsersFollowAPlaylist = (playlistId, optional) => {
   return async dispatch => {
     return dispatch(
-      spotifyApiRequest(
+      spotifyFetch(
         "checkIfUsersFollowAPlaylist",
         urls.checkIfUsersFollowAPlaylist(playlistId),
         httpMethods.checkIfUsersFollowAPlaylist,
@@ -33,7 +33,7 @@ export const checkIfUsersFollowAPlaylist = (playlistId, optional) => {
 export const followArtistsOrUsers = optional => {
   return async dispatch => {
     return dispatch(
-      spotifyApiRequest(
+      spotifyFetch(
         "followArtistsOrUsers",
         urls.followArtistsOrUsers,
         httpMethods.followArtistsOrUsers,
@@ -47,7 +47,7 @@ export const followArtistsOrUsers = optional => {
 export const followPlaylist = (playlistId, optional) => {
   return async dispatch => {
     return dispatch(
-      spotifyApiRequest(
+      spotifyFetch(
         "followPlaylist",
         urls.followPlaylist(playlistId),
         httpMethods.followPlaylist,
@@ -61,7 +61,7 @@ export const followPlaylist = (playlistId, optional) => {
 export const getUserFollowedArtists = optional => {
   return async dispatch => {
     return dispatch(
-      spotifyApiRequest(
+      spotifyFetch(
         "getUserFollowedArtists",
         urls.getUserFollowedArtists,
         httpMethods.getUserFollowedArtists,
@@ -75,7 +75,7 @@ export const getUserFollowedArtists = optional => {
 export const unfollowArtistsOrUsers = optional => {
   return async dispatch => {
     return dispatch(
-      spotifyApiRequest(
+      spotifyFetch(
         "unfollowArtistsOrUsers",
         urls.unfollowArtistsOrUsers,
         httpMethods.unfollowArtistsOrUsers,
@@ -89,7 +89,7 @@ export const unfollowArtistsOrUsers = optional => {
 export const unfollowPlaylist = (playlistId, optional) => {
   return async dispatch => {
     return dispatch(
-      spotifyApiRequest(
+      spotifyFetch(
         "unfollowPlaylist",
         urls.unfollowPlaylist(playlistId),
         httpMethods.unfollowPlaylist,

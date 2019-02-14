@@ -1,15 +1,12 @@
-import host from "../../host";
-
 const urls = {
-  getAllCategories: `${host}/browse/categories`,
-  getSingleBrowseCategory: categoryId =>
-    `${host}/browse/categories/${categoryId}`,
+  getAllCategories: `/browse/categories`,
+  getSingleBrowseCategory: categoryId => `/browse/categories/${categoryId}`,
   getCategoryPlaylists: categoryId =>
-    `${host}/browse/categories/${categoryId}/playlists`,
-  getReccomendations: `${host}/recommendations`,
-  getAvailableGenreSeeds: `${host}/recommendations/available-genre-seeds`,
-  getAllNewReleases: `${host}/browse/new-releases`,
-  getAllFeaturedPlaylists: `${host}/browse/featured-playlists`
+    `/browse/categories/${categoryId}/playlists`,
+  getReccomendations: `/recommendations`,
+  getAvailableGenreSeeds: `/recommendations/available-genre-seeds`,
+  getAllNewReleases: `/browse/new-releases`,
+  getAllFeaturedPlaylists: `/browse/featured-playlists`
 };
 
 export const httpMethods = {

@@ -1,10 +1,10 @@
-import spotifyApiRequest from "../helpers/apiRequest";
+import spotifyFetch from "../helpers/fetch";
 import urls, { httpMethods } from "./urls/browse";
 
 export const getAllCategories = async optional => {
   return async dispatch => {
     return dispatch(
-      spotifyApiRequest(
+      spotifyFetch(
         "getAllCategories",
         urls.getAllCategories,
         httpMethods.getAllCategories,
@@ -17,7 +17,7 @@ export const getAllCategories = async optional => {
 export const getSingleBrowseCategory = async (categoryId, optional) => {
   return async dispatch => {
     return dispatch(
-      spotifyApiRequest(
+      spotifyFetch(
         "getSingleBrowseCategory",
         urls.getSingleBrowseCategory(categoryId),
         httpMethods.getSingleBrowseCategory,
@@ -30,7 +30,7 @@ export const getSingleBrowseCategory = async (categoryId, optional) => {
 export const getCategoryPlaylists = async (categoryId, optional) => {
   return async dispatch => {
     return dispatch(
-      spotifyApiRequest(
+      spotifyFetch(
         "getCategoryPlaylists",
         urls.getCategoryPlaylists(categoryId),
         httpMethods.getCategoryPlaylists,
@@ -54,7 +54,7 @@ export const getReccomendations = async (
       seedTracks
     };
     return dispatch(
-      spotifyApiRequest(
+      spotifyFetch(
         "getCategoryPlaylists",
         urls.getReccomendations,
         httpMethods.getReccomendations,
@@ -67,7 +67,7 @@ export const getReccomendations = async (
 export const getReccomendationGenres = async () => {
   return async dispatch => {
     return dispatch(
-      spotifyApiRequest(
+      spotifyFetch(
         "getReccomendationGenres",
         urls.getAvailableGenreSeeds,
         httpMethods.getReccomendationGenres,
@@ -81,7 +81,7 @@ export const getReccomendationGenres = async () => {
 export const getAllNewReleases = async optional => {
   return async dispatch => {
     return dispatch(
-      spotifyApiRequest(
+      spotifyFetch(
         "getAllNewReleases",
         urls.getAllNewReleases,
         httpMethods.getAllNewReleases,
@@ -94,7 +94,7 @@ export const getAllNewReleases = async optional => {
 export const getAllFeaturedPlaylists = async optional => {
   return async dispatch => {
     return dispatch(
-      spotifyApiRequest(
+      spotifyFetch(
         "getAllFeaturedPlaylists",
         urls.getAllFeaturedPlaylists,
         httpMethods.getAllFeaturedPlaylists,

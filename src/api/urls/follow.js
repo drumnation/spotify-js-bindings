@@ -1,14 +1,12 @@
-import host from "../../host";
-
 const urls = {
-  getFollowingStateForArtistsUsers: `${host}/v1/me/following/contains`,
+  getFollowingStateForArtistsUsers: `/v1/me/following/contains`,
   checkIfUsersFollowPlaylist: playlistId =>
-    `${host}/v1/playlists/${playlistId}/followers/contains`,
-  followArtistsOrUsers: `${host}/v1/me/following`,
-  followPlaylist: playlistId => `${host}/playlists/${playlistId}/followers`,
-  getUserFollowedArtists: `${host}/me/following`,
-  unfollowArtistsOrUsers: `${host}/me/following`,
-  unfollowPlaylist: playlistId => `${host}/v1/playlists/${playlistId}/followers`
+    `/v1/playlists/${playlistId}/followers/contains`,
+  followArtistsOrUsers: `/v1/me/following`,
+  followPlaylist: playlistId => `/playlists/${playlistId}/followers`,
+  getUserFollowedArtists: `/me/following`,
+  unfollowArtistsOrUsers: `/me/following`,
+  unfollowPlaylist: playlistId => `/v1/playlists/${playlistId}/followers`
 };
 
 export const httpMethods = {

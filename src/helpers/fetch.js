@@ -6,12 +6,17 @@ import { types, createFetchOptions } from "../redux";
 import { hasOptionalParams } from "./conditionals";
 import createQueryString from "./query";
 
-const spotifyApiRequest = async (name, httpMethod, url, optional, body) => {
+const spotifyFetch = async (name, httpMethod, url, optional, body) => {
   return async dispatch => {
+    const host = "https://api.spotify.com/v1";
+    url = host + url;
+
     const options = dispatch(createFetchOptions(httpMethod, body));
+
     if (hasOptionalParams(optional)) {
       url += createQueryString(optional);
     }
+
     try {
       const response = await fetch(url, options);
       const json = response.json();
@@ -23,4 +28,4 @@ const spotifyApiRequest = async (name, httpMethod, url, optional, body) => {
   };
 };
 
-export default spotifyApiRequest;
+export default spotifyFetch;
