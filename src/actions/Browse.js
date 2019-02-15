@@ -1,11 +1,10 @@
-import bindActionCreators from "../helpers/actions";
-import spotifyFetch from "../helpers/fetch";
-
 import { urls, httpMethods } from "../config/browse";
+import { spotifyFetch } from "../redux";
+import bindActionCreators from "../helpers/actions";
 
 const getAllCategories = optional => {
   return async dispatch => {
-    const categories = await dispatch(
+    return dispatch(
       spotifyFetch(
         "getAllCategories",
         urls.getAllCategories,
@@ -14,7 +13,6 @@ const getAllCategories = optional => {
         null
       )
     );
-    return categories;
   };
 };
 

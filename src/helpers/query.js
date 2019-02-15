@@ -1,12 +1,10 @@
+import { isKeyDefined, isNotLast } from "./conditionals";
+
 String.prototype.toUnderscore = function() {
   return this.replace(/([A-Z])/g, function($1) {
     return `_${$1.toLowerCase()}`;
   });
 };
-
-const isKeyDefined = (key, keys) => keys[key] !== undefined;
-
-const isNotLast = (current, last) => current !== last;
 
 const createQueryString = keys => {
   if (keys !== null) {

@@ -1,4 +1,4 @@
-import spotifyFetch from "../helpers/fetch";
+import { spotifyFetch } from "../redux";
 import { urls, httpMethods } from "../config/playlists";
 import bindActionCreators from "../helpers/actions";
 

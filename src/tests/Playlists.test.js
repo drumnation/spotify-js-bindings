@@ -1,4 +1,4 @@
-import store from "../../store";
+import store from "../store";
 import { setSpotifyToken } from "../redux";
 import { playlists } from "../index";
 import token from "../../token";

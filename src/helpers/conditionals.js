@@ -11,4 +11,14 @@ const isJsonString = str => {
 
 const hasBodyContent = bodyContent => bodyContent !== undefined;
 
-export { hasOptionalParams, isJsonString, hasBodyContent };
+const isKeyDefined = (key, keys) => keys[key] !== undefined;
+
+const isNotLast = (current, last) => current !== last;
+
+export {
+  hasOptionalParams,
+  isJsonString,
+  hasBodyContent,
+  isKeyDefined,
+  isNotLast
+};
