@@ -1,7 +1,8 @@
 import spotifyFetch from "../helpers/fetch";
-import urls, { httpMethods } from "./urls/library";
+import { urls, httpMethods } from "../config/library";
+import bindActionCreators from "../helpers/actions";
 
-export const checkUserSavedAlbums = (albumIds, optional) => {
+const checkUserSavedAlbums = (albumIds, optional) => {
   return async dispatch => {
     const mergedOptional = {
       ids: albumIds,
@@ -19,7 +20,7 @@ export const checkUserSavedAlbums = (albumIds, optional) => {
   };
 };
 
-export const saveTracksForUser = (trackIds, optional) => {
+const saveTracksForUser = (trackIds, optional) => {
   return async dispatch => {
     const mergedOptional = {
       ids: trackIds,
@@ -37,7 +38,7 @@ export const saveTracksForUser = (trackIds, optional) => {
   };
 };
 
-export const removeAlbumsForCurrentUser = (albumIds, optional) => {
+const removeAlbumsForCurrentUser = (albumIds, optional) => {
   return async dispatch => {
     const mergedOptional = {
       ids: albumIds,
@@ -55,7 +56,7 @@ export const removeAlbumsForCurrentUser = (albumIds, optional) => {
   };
 };
 
-export const saveAlbumsForCurrentUser = (albumIds, optional) => {
+const saveAlbumsForCurrentUser = (albumIds, optional) => {
   return async dispatch => {
     const mergedOptional = {
       ids: albumIds,
@@ -73,7 +74,7 @@ export const saveAlbumsForCurrentUser = (albumIds, optional) => {
   };
 };
 
-export const removeUserSavedTracks = (trackIds, optional) => {
+const removeUserSavedTracks = (trackIds, optional) => {
   return async dispatch => {
     const mergedOptional = {
       ids: trackIds,
@@ -91,7 +92,7 @@ export const removeUserSavedTracks = (trackIds, optional) => {
   };
 };
 
-export const getUserSavedAlbums = (albumIds, optional) => {
+const getUserSavedAlbums = (albumIds, optional) => {
   return async dispatch => {
     const mergedOptional = {
       ids: albumIds,
@@ -109,7 +110,7 @@ export const getUserSavedAlbums = (albumIds, optional) => {
   };
 };
 
-export const getUserSavedTracks = optional => {
+const getUserSavedTracks = optional => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -123,7 +124,7 @@ export const getUserSavedTracks = optional => {
   };
 };
 
-export const checkUserSavedTracks = (trackIds, optional) => {
+const checkUserSavedTracks = (trackIds, optional) => {
   return async dispatch => {
     const mergedOptional = {
       ids: trackIds,
@@ -140,3 +141,16 @@ export const checkUserSavedTracks = (trackIds, optional) => {
     );
   };
 };
+
+const library = bindActionCreators({
+  checkUserSavedAlbums,
+  saveTracksForUser,
+  removeAlbumsForCurrentUser,
+  saveAlbumsForCurrentUser,
+  removeUserSavedTracks,
+  getUserSavedAlbums,
+  getUserSavedTracks,
+  checkUserSavedTracks
+});
+
+export default library;

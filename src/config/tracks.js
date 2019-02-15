@@ -1,4 +1,4 @@
-const urls = {
+export const urls = {
   getAudioFeaturesForTrack: trackId => `/audio-features/${trackId}`,
   getTrack: trackId => `/tracks/${trackId}`,
   getAudioAnalysisForTrack: trackId => `/audio-analysis/${trackId}`,
@@ -13,5 +13,3 @@ export const httpMethods = {
   getAudioFeaturesForSeveralTracks: "GET",
   getSeveralTracks: "GET"
 };
-
-export default urls;

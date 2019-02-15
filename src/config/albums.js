@@ -1,4 +1,4 @@
-const urls = {
+export const urls = {
   getMultipleAlbums: "/albums",
   getAlbum: albumId => `/albums/${albumId}`,
   getAlbumTracks: albumId => `/albums/${albumId}/tracks`
@@ -9,5 +9,3 @@ export const httpMethods = {
   getAlbum: "GET",
   getAlbumTracks: "GET"
 };
-
-export default urls;

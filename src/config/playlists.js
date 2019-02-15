@@ -1,4 +1,4 @@
-const urls = {
+export const urls = {
   addTracksToPlaylist: playlistId => `/playlists/${playlistId}/tracks`,
   getPlaylist: playlistId => `/playlists/${playlistId}`,
   removeTracksFromPlaylist: playlistId => `/playlists/${playlistId}/tracks`,
@@ -29,5 +29,3 @@ export const httpMethods = {
   createPlaylist: "POST",
   reorderPlaylistTracks: "PUT"
 };
-
-export default urls;

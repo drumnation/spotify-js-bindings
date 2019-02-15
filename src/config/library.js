@@ -1,4 +1,4 @@
-const urls = {
+export const urls = {
   checkUserSavedAlbums: "/me/albums/contains",
   saveTracksForUser: "/me/tracks",
   removeAlbumsForCurrentUser: "/me/albums",
@@ -19,5 +19,3 @@ export const httpMethods = {
   getUserSavedTracks: "GET",
   checkUserSavedTracks: "GET"
 };
-
-export default urls;

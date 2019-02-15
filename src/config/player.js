@@ -1,4 +1,4 @@
-const urls = {
+export const urls = {
   skipUserPlaybackToNextTrack: "/me/player/next",
   seekToPositionInCurrentlyPlayingTrack: "/me/player/seek",
   getUserAvailableDevices: "/me/player/devices",
@@ -29,5 +29,3 @@ export const httpMethods = {
   getUserCurrentlyPlayingTrack: "GET",
   setVolumeForUserPlayback: "PUT"
 };
-
-export default urls;

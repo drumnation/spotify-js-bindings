@@ -1,4 +1,4 @@
-const urls = {
+export const urls = {
   getAllCategories: `/browse/categories`,
   getSingleBrowseCategory: categoryId => `/browse/categories/${categoryId}`,
   getCategoryPlaylists: categoryId =>
@@ -18,5 +18,3 @@ export const httpMethods = {
   getAllNewReleases: "GET",
   getAllFeaturedPlaylists: "GET"
 };
-
-export default urls;

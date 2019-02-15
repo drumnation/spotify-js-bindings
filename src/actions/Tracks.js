@@ -1,7 +1,8 @@
 import spotifyFetch from "../helpers/fetch";
-import urls, { httpMethods } from "./urls/tracks";
+import { urls, httpMethods } from "../config/personalization";
+import bindActionCreators from "../helpers/actions";
 
-export const getAudioFeaturesForTrack = (trackId, optional) => {
+const getAudioFeaturesForTrack = (trackId, optional) => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -15,7 +16,7 @@ export const getAudioFeaturesForTrack = (trackId, optional) => {
   };
 };
 
-export const getTrack = (trackId, optional) => {
+const getTrack = (trackId, optional) => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -29,7 +30,7 @@ export const getTrack = (trackId, optional) => {
   };
 };
 
-export const getAudioAnalysisForTrack = (trackId, optional) => {
+const getAudioAnalysisForTrack = (trackId, optional) => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -43,7 +44,7 @@ export const getAudioAnalysisForTrack = (trackId, optional) => {
   };
 };
 
-export const getAudioFeaturesForSeveralTracks = (trackIds, optional) => {
+const getAudioFeaturesForSeveralTracks = (trackIds, optional) => {
   return async dispatch => {
     const mergedOptional = {
       ids: trackIds,
@@ -61,7 +62,7 @@ export const getAudioFeaturesForSeveralTracks = (trackIds, optional) => {
   };
 };
 
-export const getSeveralTracks = (trackIds, optional) => {
+const getSeveralTracks = (trackIds, optional) => {
   return async dispatch => {
     const mergedOptional = {
       ids: trackIds,
@@ -78,3 +79,13 @@ export const getSeveralTracks = (trackIds, optional) => {
     );
   };
 };
+
+const tracks = bindActionCreators({
+  getAudioFeaturesForTrack,
+  getTrack,
+  getAudioAnalysisForTrack,
+  getAudioFeaturesForSeveralTracks,
+  getSeveralTracks
+});
+
+export default tracks;

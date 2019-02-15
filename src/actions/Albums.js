@@ -1,7 +1,8 @@
 import spotifyFetch from "../helpers/fetch";
-import urls, { httpMethods } from "./urls/albums";
+import { urls, httpMethods } from "../config/albums";
+import bindActionCreators from "../helpers/actions";
 
-export const getMultipleAlbums = (albumIds, optional) => {
+const getMultipleAlbums = (albumIds, optional) => {
   return async dispatch => {
     const mergedOptional = {
       ids: albumIds,
@@ -19,7 +20,7 @@ export const getMultipleAlbums = (albumIds, optional) => {
   };
 };
 
-export const getAlbum = (albumId, optional) => {
+const getAlbum = (albumId, optional) => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -33,7 +34,7 @@ export const getAlbum = (albumId, optional) => {
   };
 };
 
-export const getAnAlbumTracks = (albumId, optional) => {
+const getAnAlbumTracks = (albumId, optional) => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -46,3 +47,11 @@ export const getAnAlbumTracks = (albumId, optional) => {
     );
   };
 };
+
+const albums = bindActionCreators({
+  getMultipleAlbums,
+  getAlbum,
+  getAnAlbumTracks
+});
+
+export default albums;

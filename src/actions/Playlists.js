@@ -1,7 +1,8 @@
 import spotifyFetch from "../helpers/fetch";
-import urls, { httpMethods } from "./urls/playlists";
+import { urls, httpMethods } from "../config/playlists";
+import bindActionCreators from "../helpers/actions";
 
-export const addTracksToPlaylist = async (playlistId, uris, optional) => {
+const addTracksToPlaylist = async (playlistId, uris, optional) => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -15,7 +16,7 @@ export const addTracksToPlaylist = async (playlistId, uris, optional) => {
   };
 };
 
-export const getPlaylist = async (playlistId, optional) => {
+const getPlaylist = async (playlistId, optional) => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -29,7 +30,7 @@ export const getPlaylist = async (playlistId, optional) => {
   };
 };
 
-export const removeTracksFromPlaylist = async (playlistId, body, optional) => {
+const removeTracksFromPlaylist = async (playlistId, body, optional) => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -43,7 +44,7 @@ export const removeTracksFromPlaylist = async (playlistId, body, optional) => {
   };
 };
 
-export const getPlaylistTracks = async (playlistId, optional) => {
+const getPlaylistTracks = async (playlistId, optional) => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -57,7 +58,7 @@ export const getPlaylistTracks = async (playlistId, optional) => {
   };
 };
 
-export const getPlaylistCoverImage = async (playlistId, optional) => {
+const getPlaylistCoverImage = async (playlistId, optional) => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -71,7 +72,7 @@ export const getPlaylistCoverImage = async (playlistId, optional) => {
   };
 };
 
-export const uploadCustomPlaylistCoverImage = async (playlistId, optional) => {
+const uploadCustomPlaylistCoverImage = async (playlistId, optional) => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -85,7 +86,7 @@ export const uploadCustomPlaylistCoverImage = async (playlistId, optional) => {
   };
 };
 
-export const getListOfCurrentUserPlaylists = async optional => {
+const getListOfCurrentUserPlaylists = async optional => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -99,7 +100,7 @@ export const getListOfCurrentUserPlaylists = async optional => {
   };
 };
 
-export const changePlaylistDetails = async (playlistId, body, optional) => {
+const changePlaylistDetails = async (playlistId, body, optional) => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -113,7 +114,7 @@ export const changePlaylistDetails = async (playlistId, body, optional) => {
   };
 };
 
-export const getListOfUserPlaylists = (playlistId, optional) => {
+const getListOfUserPlaylists = (playlistId, optional) => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -127,7 +128,7 @@ export const getListOfUserPlaylists = (playlistId, optional) => {
   };
 };
 
-export const reorderOrReplacePlaylistTracks = (playlistId, body, optional) => {
+const reorderOrReplacePlaylistTracks = (playlistId, body, optional) => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -141,7 +142,7 @@ export const reorderOrReplacePlaylistTracks = (playlistId, body, optional) => {
   };
 };
 
-export const createPlaylist = async (playlistId, body, optional) => {
+const createPlaylist = async (playlistId, body, optional) => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -155,7 +156,7 @@ export const createPlaylist = async (playlistId, body, optional) => {
   };
 };
 
-export const reorderPlaylistTracks = async (playlistId, body, optional) => {
+const reorderPlaylistTracks = async (playlistId, body, optional) => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -168,3 +169,20 @@ export const reorderPlaylistTracks = async (playlistId, body, optional) => {
     );
   };
 };
+
+const playlists = bindActionCreators({
+  addTracksToPlaylist,
+  getPlaylist,
+  removeTracksFromPlaylist,
+  getPlaylistTracks,
+  getPlaylistCoverImage,
+  uploadCustomPlaylistCoverImage,
+  getListOfCurrentUserPlaylists,
+  changePlaylistDetails,
+  getListOfUserPlaylists,
+  reorderOrReplacePlaylistTracks,
+  createPlaylist,
+  reorderPlaylistTracks
+});
+
+export default playlists;

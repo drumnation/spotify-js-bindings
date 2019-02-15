@@ -9,4 +9,6 @@ const isJsonString = str => {
   return true;
 };
 
-export { hasOptionalParams, isJsonString };
+const hasBodyContent = bodyContent => bodyContent !== undefined;
+
+export { hasOptionalParams, isJsonString, hasBodyContent };

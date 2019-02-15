@@ -1,4 +1,7 @@
-import { follow } from "../../index";
+import store from "../../store";
+import { setSpotifyToken } from "../redux";
+import { follow } from "../index";
+import token from "../../secret";
 
 describe("Follow API", () => {
   describe("Follow API tests with no params", () => {

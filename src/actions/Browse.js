@@ -1,10 +1,11 @@
+import bindActionCreators from "../helpers/actions";
 import spotifyFetch from "../helpers/fetch";
 
-import urls, { httpMethods } from "./urls/browse";
+import { urls, httpMethods } from "../config/browse";
 
-export const getAllCategories = async optional => {
+const getAllCategories = optional => {
   return async dispatch => {
-    return dispatch(
+    const categories = await dispatch(
       spotifyFetch(
         "getAllCategories",
         urls.getAllCategories,
@@ -13,10 +14,11 @@ export const getAllCategories = async optional => {
         null
       )
     );
+    return categories;
   };
 };
 
-export const getSingleBrowseCategory = async (categoryId, optional) => {
+const getSingleBrowseCategory = (categoryId, optional) => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -30,7 +32,7 @@ export const getSingleBrowseCategory = async (categoryId, optional) => {
   };
 };
 
-export const getCategoryPlaylists = async (categoryId, optional) => {
+const getCategoryPlaylists = (categoryId, optional) => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -44,12 +46,7 @@ export const getCategoryPlaylists = async (categoryId, optional) => {
   };
 };
 
-export const getReccomendations = async (
-  seedArtists,
-  seedGenres,
-  seedTracks,
-  optional
-) => {
+const getReccomendations = (seedArtists, seedGenres, seedTracks, optional) => {
   return async dispatch => {
     const mergedOptional = {
       seedArtists,
@@ -69,7 +66,7 @@ export const getReccomendations = async (
   };
 };
 
-export const getReccomendationGenres = async () => {
+const getReccomendationGenres = () => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -83,7 +80,7 @@ export const getReccomendationGenres = async () => {
   };
 };
 
-export const getAllNewReleases = async optional => {
+const getAllNewReleases = optional => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -97,7 +94,7 @@ export const getAllNewReleases = async optional => {
   };
 };
 
-export const getAllFeaturedPlaylists = async optional => {
+const getAllFeaturedPlaylists = optional => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -110,3 +107,15 @@ export const getAllFeaturedPlaylists = async optional => {
     );
   };
 };
+
+const browse = bindActionCreators({
+  getAllCategories,
+  getSingleBrowseCategory,
+  getCategoryPlaylists,
+  getReccomendations,
+  getReccomendationGenres,
+  getAllNewReleases,
+  getAllFeaturedPlaylists
+});
+
+export default browse;

@@ -1,7 +1,8 @@
 import spotifyFetch from "../helpers/fetch";
-import urls, { httpMethods } from "./urls/search";
+import { urls, httpMethods } from "../config/personalization";
+import bindActionCreators from "../helpers/actions";
 
-export const searchForItem = (query, type, optional) => {
+const searchForItem = (query, type, optional) => {
   return async dispatch => {
     const mergedOptional = {
       q: query,
@@ -19,3 +20,9 @@ export const searchForItem = (query, type, optional) => {
     );
   };
 };
+
+const search = bindActionCreators({
+  searchForItem
+});
+
+export default search;

@@ -1,7 +1,8 @@
 import spotifyFetch from "../helpers/fetch";
-import urls, { httpMethods } from "./urls/follow";
+import { urls, httpMethods } from "../config/follow";
+import bindActionCreators from "../helpers/actions";
 
-export const getFollowingStateForArtistsUsers = optional => {
+const getFollowingStateForArtistsUsers = optional => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -15,7 +16,7 @@ export const getFollowingStateForArtistsUsers = optional => {
   };
 };
 
-export const checkIfUsersFollowAPlaylist = (playlistId, optional) => {
+const checkIfUsersFollowAPlaylist = (playlistId, optional) => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -29,7 +30,7 @@ export const checkIfUsersFollowAPlaylist = (playlistId, optional) => {
   };
 };
 
-export const followArtistsOrUsers = optional => {
+const followArtistsOrUsers = optional => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -43,7 +44,7 @@ export const followArtistsOrUsers = optional => {
   };
 };
 
-export const followPlaylist = (playlistId, optional) => {
+const followPlaylist = (playlistId, optional) => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -57,7 +58,7 @@ export const followPlaylist = (playlistId, optional) => {
   };
 };
 
-export const getUserFollowedArtists = optional => {
+const getUserFollowedArtists = optional => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -71,7 +72,7 @@ export const getUserFollowedArtists = optional => {
   };
 };
 
-export const unfollowArtistsOrUsers = optional => {
+const unfollowArtistsOrUsers = optional => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -85,7 +86,7 @@ export const unfollowArtistsOrUsers = optional => {
   };
 };
 
-export const unfollowPlaylist = (playlistId, optional) => {
+const unfollowPlaylist = (playlistId, optional) => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -98,3 +99,15 @@ export const unfollowPlaylist = (playlistId, optional) => {
     );
   };
 };
+
+const follow = bindActionCreators({
+  getFollowingStateForArtistsUsers,
+  checkIfUsersFollowAPlaylist,
+  followArtistsOrUsers,
+  followPlaylist,
+  getUserFollowedArtists,
+  unfollowArtistsOrUsers,
+  unfollowPlaylist
+});
+
+export default follow;

@@ -1,4 +1,4 @@
-const urls = {
+export const urls = {
   getFollowingStateForArtistsUsers: `/v1/me/following/contains`,
   checkIfUsersFollowPlaylist: playlistId =>
     `/v1/playlists/${playlistId}/followers/contains`,
@@ -18,5 +18,3 @@ export const httpMethods = {
   unfollowArtistsOrUsers: "DELETE",
   unfollowPlaylist: "DELETE"
 };
-
-export default urls;

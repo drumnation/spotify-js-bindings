@@ -1,8 +1,8 @@
 import spotifyFetch from "../helpers/fetch";
+import { urls, httpMethods } from "../config/albums";
+import bindActionCreators from "../helpers/actions";
 
-import urls, { httpMethods } from "./urls/albums";
-
-export const skipUserPlaybackToNextTrack = optional => {
+const skipUserPlaybackToNextTrack = optional => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -16,7 +16,7 @@ export const skipUserPlaybackToNextTrack = optional => {
   };
 };
 
-export const seekToPositionInCurrentlyPlayingTrack = (positionMs, optional) => {
+const seekToPositionInCurrentlyPlayingTrack = (positionMs, optional) => {
   return async dispatch => {
     const mergedOptional = {
       positionMs,
@@ -34,7 +34,7 @@ export const seekToPositionInCurrentlyPlayingTrack = (positionMs, optional) => {
   };
 };
 
-export const getUserAvailableDevices = optional => {
+const getUserAvailableDevices = optional => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -48,7 +48,7 @@ export const getUserAvailableDevices = optional => {
   };
 };
 
-export const toggleShuffleForUserPlayback = (state, optional) => {
+const toggleShuffleForUserPlayback = (state, optional) => {
   return async dispatch => {
     const mergedOptional = {
       state,
@@ -66,7 +66,7 @@ export const toggleShuffleForUserPlayback = (state, optional) => {
   };
 };
 
-export const transferUserPlayback = (deviceIds, optional) => {
+const transferUserPlayback = (deviceIds, optional) => {
   return async dispatch => {
     const mergedOptional = {
       deviceIds,
@@ -84,7 +84,7 @@ export const transferUserPlayback = (deviceIds, optional) => {
   };
 };
 
-export const getCurrentUserRecentlyPlayedTracks = optional => {
+const getCurrentUserRecentlyPlayedTracks = optional => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -98,7 +98,7 @@ export const getCurrentUserRecentlyPlayedTracks = optional => {
   };
 };
 
-export const startResumeUserPlayback = optional => {
+const startResumeUserPlayback = optional => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -112,7 +112,7 @@ export const startResumeUserPlayback = optional => {
   };
 };
 
-export const setRepeatModeOnUserPlayback = (state, optional) => {
+const setRepeatModeOnUserPlayback = (state, optional) => {
   return async dispatch => {
     const mergedOptional = {
       state,
@@ -130,7 +130,7 @@ export const setRepeatModeOnUserPlayback = (state, optional) => {
   };
 };
 
-export const pauseUserPlayback = optional => {
+const pauseUserPlayback = optional => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -144,7 +144,7 @@ export const pauseUserPlayback = optional => {
   };
 };
 
-export const skipUserPlaybackToPreviousTrack = optional => {
+const skipUserPlaybackToPreviousTrack = optional => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -158,7 +158,7 @@ export const skipUserPlaybackToPreviousTrack = optional => {
   };
 };
 
-export const getInformationAboutUserCurrentPlayback = optional => {
+const getInformationAboutUserCurrentPlayback = optional => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -172,7 +172,7 @@ export const getInformationAboutUserCurrentPlayback = optional => {
   };
 };
 
-export const getUserCurrentlyPlayingTrack = (market, optional) => {
+const getUserCurrentlyPlayingTrack = (market, optional) => {
   return async dispatch => {
     const mergedOptional = {
       market,
@@ -190,7 +190,7 @@ export const getUserCurrentlyPlayingTrack = (market, optional) => {
   };
 };
 
-export const setVolumeForUserPlayback = (volumePercent, optional) => {
+const setVolumeForUserPlayback = (volumePercent, optional) => {
   return async dispatch => {
     const mergedOptional = {
       volumePercent,
@@ -207,3 +207,21 @@ export const setVolumeForUserPlayback = (volumePercent, optional) => {
     );
   };
 };
+
+const player = bindActionCreators({
+  skipUserPlaybackToNextTrack,
+  seekToPositionInCurrentlyPlayingTrack,
+  getUserAvailableDevices,
+  toggleShuffleForUserPlayback,
+  transferUserPlayback,
+  getCurrentUserRecentlyPlayedTracks,
+  startResumeUserPlayback,
+  setRepeatModeOnUserPlayback,
+  pauseUserPlayback,
+  skipUserPlaybackToPreviousTrack,
+  getInformationAboutUserCurrentPlayback,
+  getUserCurrentlyPlayingTrack,
+  setVolumeForUserPlayback
+});
+
+export default player;

@@ -1,7 +1,8 @@
 import spotifyFetch from "../helpers/fetch";
-import urls, { httpMethods } from "./urls/personalization";
+import { urls, httpMethods } from "../config/personalization";
+import bindActionCreators from "../helpers/actions";
 
-export const getUserTopArtistsAndTracks = (type, optional) => {
+const getUserTopArtistsAndTracks = (type, optional) => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -14,3 +15,9 @@ export const getUserTopArtistsAndTracks = (type, optional) => {
     );
   };
 };
+
+const personalization = bindActionCreators({
+  getUserTopArtistsAndTracks
+});
+
+export default personalization;

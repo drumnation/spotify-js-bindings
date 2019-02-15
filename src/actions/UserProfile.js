@@ -1,7 +1,8 @@
 import spotifyFetch from "../helpers/fetch";
-import urls, { httpMethods } from "./urls/user";
+import { urls, httpMethods } from "../config/personalization";
+import bindActionCreators from "../helpers/actions";
 
-export const getUserProfile = (userId, optional) => {
+const getUserProfile = (userId, optional) => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -15,7 +16,7 @@ export const getUserProfile = (userId, optional) => {
   };
 };
 
-export const getCurrentUserProfile = optional => {
+const getCurrentUserProfile = optional => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -28,3 +29,10 @@ export const getCurrentUserProfile = optional => {
     );
   };
 };
+
+const userProfile = bindActionCreators({
+  getUserProfile,
+  getCurrentUserProfile
+});
+
+export default userProfile;

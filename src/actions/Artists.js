@@ -1,8 +1,9 @@
 import spotifyFetch from "../helpers/fetch";
 
-import urls, { httpMethods } from "./urls/artists";
+import { urls, httpMethods } from "../config/artists";
+import bindActionCreators from "../helpers/actions";
 
-export const getMultipleArtists = (artistIds, optional) => {
+const getMultipleArtists = (artistIds, optional) => {
   return async dispatch => {
     const mergedOptions = {
       ids: artistIds,
@@ -20,7 +21,7 @@ export const getMultipleArtists = (artistIds, optional) => {
   };
 };
 
-export const getArtist = (artistId, optional) => {
+const getArtist = (artistId, optional) => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -34,7 +35,7 @@ export const getArtist = (artistId, optional) => {
   };
 };
 
-export const getArtistAlbums = (artistId, optional) => {
+const getArtistAlbums = (artistId, optional) => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -48,7 +49,7 @@ export const getArtistAlbums = (artistId, optional) => {
   };
 };
 
-export const getArtistTopTracks = (artistId, market, optional) => {
+const getArtistTopTracks = (artistId, market, optional) => {
   return async dispatch => {
     const mergedOptions = {
       market,
@@ -66,7 +67,7 @@ export const getArtistTopTracks = (artistId, market, optional) => {
   };
 };
 
-export const getArtistRelatedArtists = (artistId, optional) => {
+const getArtistRelatedArtists = (artistId, optional) => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -79,3 +80,13 @@ export const getArtistRelatedArtists = (artistId, optional) => {
     );
   };
 };
+
+const artists = bindActionCreators({
+  getMultipleArtists,
+  getArtist,
+  getArtistAlbums,
+  getArtistTopTracks,
+  getArtistRelatedArtists
+});
+
+export default artists;

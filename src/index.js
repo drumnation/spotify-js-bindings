@@ -1,16 +1,16 @@
-import { setToken } from "./redux";
+import { setSpotifyToken } from "./redux";
 
-import * as albums from "./api/Albums";
-import * as artists from "./api/Artists";
-import * as browse from "./api/Browse";
-import * as follow from "./api/Follow";
-import * as library from "./api/Library";
-import * as personalization from "./api/Personalization";
-import * as player from "./api/Player";
-import * as playlists from "./api/Playlists";
-import * as search from "./api/Search";
-import * as tracks from "./api/Tracks";
-import * as userProfile from "./api/UserProfile";
+import albums from "./actions/Albums";
+import artists from "./actions/Artists";
+import browse from "./actions/Browse";
+import follow from "./actions/Follow";
+import library from "./actions/Library";
+import personalization from "./actions/Personalization";
+import player from "./actions/Player";
+import playlists from "./actions/Playlists";
+import search from "./actions/Search";
+import tracks from "./actions/Tracks";
+import userProfile from "./actions/UserProfile";
 
 export {
   albums,
@@ -22,7 +22,7 @@ export {
   player,
   playlists,
   search,
-  setToken,
+  setSpotifyToken,
   tracks,
   userProfile
 };
