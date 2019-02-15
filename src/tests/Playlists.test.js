@@ -1,7 +1,7 @@
 import store from "../../store";
 import { setSpotifyToken } from "../redux";
 import { playlists } from "../index";
-import token from "../../secret";
+import token from "../../token";
 
 beforeAll(() => {
   Spotify.setSpotifyToken(token);
