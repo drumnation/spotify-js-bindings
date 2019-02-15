@@ -2,7 +2,7 @@ import { spotifyFetch } from "../redux";
 import { urls, httpMethods } from "../config/playlists";
 import bindActionCreators from "../helpers/actions";
 
-const addTracksToPlaylist = async (playlistId, uris, optional) => {
+const addTracksToPlaylist = (playlistId, uris, optional) => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -16,7 +16,7 @@ const addTracksToPlaylist = async (playlistId, uris, optional) => {
   };
 };
 
-const getPlaylist = async (playlistId, optional) => {
+const getPlaylist = (playlistId, optional) => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -30,7 +30,7 @@ const getPlaylist = async (playlistId, optional) => {
   };
 };
 
-const removeTracksFromPlaylist = async (playlistId, body, optional) => {
+const removeTracksFromPlaylist = (playlistId, body, optional) => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -44,7 +44,7 @@ const removeTracksFromPlaylist = async (playlistId, body, optional) => {
   };
 };
 
-const getPlaylistTracks = async (playlistId, optional) => {
+const getPlaylistTracks = (playlistId, optional) => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -58,7 +58,7 @@ const getPlaylistTracks = async (playlistId, optional) => {
   };
 };
 
-const getPlaylistCoverImage = async (playlistId, optional) => {
+const getPlaylistCoverImage = (playlistId, optional) => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -72,7 +72,7 @@ const getPlaylistCoverImage = async (playlistId, optional) => {
   };
 };
 
-const uploadCustomPlaylistCoverImage = async (playlistId, optional) => {
+const uploadCustomPlaylistCoverImage = (playlistId, optional) => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -86,7 +86,7 @@ const uploadCustomPlaylistCoverImage = async (playlistId, optional) => {
   };
 };
 
-const getListOfCurrentUserPlaylists = async optional => {
+const getListOfCurrentUserPlaylists = optional => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -100,7 +100,7 @@ const getListOfCurrentUserPlaylists = async optional => {
   };
 };
 
-const changePlaylistDetails = async (playlistId, body, optional) => {
+const changePlaylistDetails = (playlistId, body, optional) => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -142,7 +142,7 @@ const reorderOrReplacePlaylistTracks = (playlistId, body, optional) => {
   };
 };
 
-const createPlaylist = async (playlistId, body, optional) => {
+const createPlaylist = (playlistId, body, optional) => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -156,7 +156,7 @@ const createPlaylist = async (playlistId, body, optional) => {
   };
 };
 
-const reorderPlaylistTracks = async (playlistId, body, optional) => {
+const reorderPlaylistTracks = (playlistId, body, optional) => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(

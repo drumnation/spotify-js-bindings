@@ -2,28 +2,37 @@ import { spotifyFetch } from "../redux";
 import { urls, httpMethods } from "../config/follow";
 import bindActionCreators from "../helpers/actions";
 
-const getFollowingStateForArtistsUsers = optional => {
+const getFollowingStateForArtistsUsers = (type, ids, optional) => {
   return async dispatch => {
+    const mergedOptional = {
+      type,
+      ids,
+      ...optional
+    };
     return dispatch(
       spotifyFetch(
         "getFollowingStateForArtistsUsers",
         urls.getFollowingStateForArtistsUsers,
         httpMethods.getFollowingStateForArtistsUsers,
-        optional,
+        mergedOptional,
         null
       )
     );
   };
 };
 
-const checkIfUsersFollowAPlaylist = (playlistId, optional) => {
+const checkIfUsersFollowPlaylist = (playlistId, ids, optional) => {
   return async dispatch => {
+    const mergedOptional = {
+      ids,
+      ...optional
+    };
     return dispatch(
       spotifyFetch(
         "checkIfUsersFollowAPlaylist",
-        urls.checkIfUsersFollowAPlaylist(playlistId),
+        urls.checkIfUsersFollowPlaylist(playlistId),
         httpMethods.checkIfUsersFollowAPlaylist,
-        optional,
+        mergedOptional,
         null
       )
     );
@@ -102,7 +111,7 @@ const unfollowPlaylist = (playlistId, optional) => {
 
 const follow = bindActionCreators({
   getFollowingStateForArtistsUsers,
-  checkIfUsersFollowAPlaylist,
+  checkIfUsersFollowPlaylist,
   followArtistsOrUsers,
   followPlaylist,
   getUserFollowedArtists,

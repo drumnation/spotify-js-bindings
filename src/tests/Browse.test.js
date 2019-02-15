@@ -9,7 +9,7 @@ beforeAll(async () => {
 
 describe("2. Browse API", () => {
   describe("Browse API tests with no params", () => {
-    test.only("Get All Categories", async () => {
+    test("Get All Categories", async () => {
       const categories = await browse.getAllCategories();
       expect(categories).toHaveProperty("categories");
     });

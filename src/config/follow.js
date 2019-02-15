@@ -1,12 +1,12 @@
 export const urls = {
-  getFollowingStateForArtistsUsers: `/v1/me/following/contains`,
+  getFollowingStateForArtistsUsers: `/me/following/contains`,
   checkIfUsersFollowPlaylist: playlistId =>
-    `/v1/playlists/${playlistId}/followers/contains`,
-  followArtistsOrUsers: `/v1/me/following`,
+    `/playlists/${playlistId}/followers/contains`,
+  followArtistsOrUsers: `/me/following`,
   followPlaylist: playlistId => `/playlists/${playlistId}/followers`,
   getUserFollowedArtists: `/me/following`,
   unfollowArtistsOrUsers: `/me/following`,
-  unfollowPlaylist: playlistId => `/v1/playlists/${playlistId}/followers`
+  unfollowPlaylist: playlistId => `/playlists/${playlistId}/followers`
 };
 
 export const httpMethods = {
