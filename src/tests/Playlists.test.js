@@ -7,7 +7,7 @@ beforeAll(async () => {
   await store.dispatch(setSpotifyToken(token));
 });
 
-describe("1. Playlists API", () => {
+describe.skip("1. Playlists API", () => {
   describe("Playlists API tests with no params", () => {
     test("Add Tracks to a Playlist", async () => {
       const response = await playlists.addTracksToPlaylist();

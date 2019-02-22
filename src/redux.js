@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 import fetch from "isomorphic-fetch";
-import { hasBodyContent, hasOptionalParams } from "./helpers/conditionals";
+
+import { hasNoBody, hasOptionalParams, isJson } from "./helpers/conditionals";
 import createQueryString from "./helpers/query";
 
 const initialState = { token: null };
@@ -12,12 +13,10 @@ const actions = {
     type: actions.SET_SPOTIFY_TOKEN,
     token
   }),
-  createFetchOptions: (method, bodyContent) => {
+  createFetchOptions: (method, body) => {
     return async (dispatch, getState) => {
       const state = await getState();
       const token = tokenSelector(state);
-      const optionalBody = { uris: bodyContent };
-      const body = hasBodyContent(bodyContent) ? optionalBody : null;
       const options = {
         headers: {
           Accept: "application/json",
@@ -27,6 +26,7 @@ const actions = {
         body,
         method
       };
+      if (hasNoBody(body)) delete options.body;
       return options;
     };
   },
@@ -40,8 +40,11 @@ const actions = {
       if (hasOptionalParams(optional)) url += createQueryString(optional);
       try {
         const response = await fetch(url, options);
-        const json = response.json();
-        return json;
+        const contentType = response.headers.get("content-type");
+        if (isJson(contentType)) {
+          return response.json();
+        }
+        return response.status;
       } catch (err) {
         console.error(`${name}: `, err.message, err);
       }

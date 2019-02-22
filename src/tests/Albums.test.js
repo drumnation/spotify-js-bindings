@@ -6,3 +6,8 @@ import token from "../../token";
 beforeAll(async () => {
   await store.dispatch(setSpotifyToken(token));
 });
+
+describe.skip("2. Albums API", () => {
+  test("sample", async () => {
+  });
+});

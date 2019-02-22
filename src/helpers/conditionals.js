@@ -1,24 +1,23 @@
 const hasOptionalParams = params => params !== undefined;
 
-const isJsonString = str => {
-  try {
-    JSON.parse(str);
-  } catch (e) {
-    return false;
-  }
-  return true;
+const isJson = contentType => {
+  return contentType && contentType.indexOf("application/json") !== -1;
 };
 
-const hasBodyContent = bodyContent => bodyContent !== undefined;
+const isSuccessful = status => status >= 200 && status < 300;
+
+const hasNoBody = bodyContent =>
+  bodyContent === null || bodyContent === undefined;
 
 const isKeyDefined = (key, keys) => keys[key] !== undefined;
 
 const isNotLast = (current, last) => current !== last;
 
 export {
+  hasNoBody,
   hasOptionalParams,
-  isJsonString,
-  hasBodyContent,
+  isJson,
   isKeyDefined,
-  isNotLast
+  isNotLast,
+  isSuccessful
 };

@@ -39,21 +39,26 @@ const checkIfUsersFollowPlaylist = (playlistId, ids, optional) => {
   };
 };
 
-const followArtistsOrUsers = optional => {
+const followArtistsOrUsers = (type, ids, optional) => {
   return async dispatch => {
+    const mergedOptional = {
+      type,
+      ids,
+      ...optional
+    };
     return dispatch(
       spotifyFetch(
         "followArtistsOrUsers",
         urls.followArtistsOrUsers,
         httpMethods.followArtistsOrUsers,
-        optional,
+        mergedOptional,
         null
       )
     );
   };
 };
 
-const followPlaylist = (playlistId, optional) => {
+const followPlaylist = (playlistId, body, optional) => {
   return async dispatch => {
     return dispatch(
       spotifyFetch(
@@ -61,7 +66,7 @@ const followPlaylist = (playlistId, optional) => {
         urls.followPlaylist(playlistId),
         httpMethods.followPlaylist,
         optional,
-        null
+        body
       )
     );
   };
