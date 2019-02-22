@@ -41,10 +41,7 @@ const actions = {
       try {
         const response = await fetch(url, options);
         const contentType = response.headers.get("content-type");
-        if (isJson(contentType)) {
-          return response.json();
-        }
-        return response.status;
+        return isJson(contentType) ? response.json() : response.status;
       } catch (err) {
         console.error(`${name}: `, err.message, err);
       }
