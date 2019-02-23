@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Javascript bindings for Spotify",
   "license": "MIT",
-  "repository": "diegohaz/nod",
+  "repository": "drumnation/spotify-js-api",
   "main": "dist/index.js",
   "author": {
     "name": "David Mieloch",

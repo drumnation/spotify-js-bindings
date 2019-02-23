@@ -90,14 +90,19 @@ const getUserFollowedArtists = (type, optional) => {
   };
 };
 
-const unfollowArtistsOrUsers = optional => {
+const unfollowArtistsOrUsers = (type, ids, optional) => {
   return async dispatch => {
+    const mergedOptional = {
+      type,
+      ids,
+      ...optional
+    };
     return dispatch(
       spotifyFetch(
         "unfollowArtistsOrUsers",
         urls.unfollowArtistsOrUsers,
         httpMethods.unfollowArtistsOrUsers,
-        optional,
+        mergedOptional,
         null
       )
     );

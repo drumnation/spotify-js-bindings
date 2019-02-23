@@ -14,7 +14,7 @@ describe("Follow API", () => {
       const type = "artist";
       const ids = "5U827e4jbYz6EjtN0fIDt9,2CIMQHirSU0MQqyYHq0eOx,1s4OwCgHh16FZOkmmNLWeO"
       const categories = await follow.getFollowingStateForArtistsUsers(type, ids);
-      expect(categories).toEqual([false, true, false]);
+      expect(categories).toEqual([false, false, false]);
     });
     test("Check if Users Follow a Playlist", async () => {
       const playlistId = "3cEYpjA9oz9GiPac4AsH4n";
@@ -39,14 +39,16 @@ describe("Follow API", () => {
       const followedArtists = await follow.getUserFollowedArtists(type);
       expect(followedArtists).toHaveProperty("artists");
     });
-    // test("Unfollow Artists or Users", async () => {
-    //   const categoryId = "dinner";
-    //   const categoryPlaylists = await follow.unfollowArtistsOrUsers(categoryId);
-    //   expect(categoryPlaylists).toHaveProperty("playlists");
-    // });
-    // test("Unfollow Playlist", async () => {
-    //   const reccomendations = await follow.unfollowPlaylist();
-    //   expect(reccomendations).toHaveProperty("seeds");
-    // });
+    test("Unfollow Artists or Users", async () => {
+      const type = "artist";
+      const ids = "2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6"
+      const { status } = await follow.unfollowArtistsOrUsers(type, ids);
+      expect(isSuccessful(status)).toBe(true);
+    });
+    test("Unfollow Playlist", async () => {
+      const playlistId = "3SnvUaB6Z9aaCZ2P6PEJvy";
+      const { status } = await follow.unfollowPlaylist(playlistId);
+      expect(isSuccessful(status)).toBe(true);
+    });
   });
 });
