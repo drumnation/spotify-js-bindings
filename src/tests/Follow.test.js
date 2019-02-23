@@ -24,7 +24,7 @@ describe("Follow API", () => {
     });
     test("Follow Artists or Users", async () => {
       const type = "artist";
-      const ids = "0AMoPrd9OLxMC38dQPnSQA";
+      const ids = "0AMoPrd9OLxMC38dQPnSQA,02umg9eoz6lshS5GVJ5KE0";
       const { status } = await follow.followArtistsOrUsers(type, ids);
       expect(isSuccessful(status)).toBe(true);
     });
@@ -34,11 +34,11 @@ describe("Follow API", () => {
       const { status } = await follow.followPlaylist(playlistId, body);
       expect(isSuccessful(status)).toBe(true);
     });
-    // test("Get Users Followed Artists", async () => {
-    //   const categoryId = "dinner";
-    //   const singleCategory = await follow.getUserFollowedArtists(categoryId);
-    //   expect(singleCategory).toHaveProperty("id");
-    // });
+    test("Get Users Followed Artists", async () => {
+      const type = "artist";
+      const followedArtists = await follow.getUserFollowedArtists(type);
+      expect(followedArtists).toHaveProperty("artists");
+    });
     // test("Unfollow Artists or Users", async () => {
     //   const categoryId = "dinner";
     //   const categoryPlaylists = await follow.unfollowArtistsOrUsers(categoryId);

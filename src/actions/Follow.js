@@ -72,14 +72,18 @@ const followPlaylist = (playlistId, body, optional) => {
   };
 };
 
-const getUserFollowedArtists = optional => {
+const getUserFollowedArtists = (type, optional) => {
   return async dispatch => {
+    const mergedOptional = {
+      type,
+      ...optional
+    };
     return dispatch(
       spotifyFetch(
         "getUserFollowedArtists",
         urls.getUserFollowedArtists,
         httpMethods.getUserFollowedArtists,
-        optional,
+        mergedOptional,
         null
       )
     );
