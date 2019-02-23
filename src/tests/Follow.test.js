@@ -1,11 +1,10 @@
 import store from "../store";
-import { setSpotifyToken } from "../redux";
-import { follow } from "../index";
+import { follow, setSpotifyToken } from "../index";
 import token from "../../token";
 import { isSuccessful } from "../helpers/conditionals";
 
 beforeAll(async () => {
-  await store.dispatch(setSpotifyToken(token));
+  await setSpotifyToken(token);
 });
 
 describe("Follow API", () => {

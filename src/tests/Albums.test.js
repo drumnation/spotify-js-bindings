@@ -1,10 +1,9 @@
 import store from "../store";
-import { setSpotifyToken } from "../redux";
-import { albums } from "../index";
+import { albums, setSpotifyToken } from "../index";
 import token from "../../token";
 
 beforeAll(async () => {
-  await store.dispatch(setSpotifyToken(token));
+  await setSpotifyToken(token);
 });
 
 describe.skip("2. Albums API", () => {

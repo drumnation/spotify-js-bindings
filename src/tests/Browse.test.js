@@ -1,10 +1,9 @@
 import store from "../store";
-import { setSpotifyToken } from "../redux";
-import { browse } from "../index";
+import { browse, setSpotifyToken } from "../index";
 import token from "../../token";
 
 beforeAll(async () => {
-  await store.dispatch(setSpotifyToken(token));
+  await setSpotifyToken(token);
 });
 
 describe("2. Browse API", () => {

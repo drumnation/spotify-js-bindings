@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 import fetch from "isomorphic-fetch";
 
+import bindActionCreators from "./helpers/actions";
 import { hasNoBody, hasOptionalParams, isJson } from "./helpers/conditionals";
 import createQueryString from "./helpers/query";
 
@@ -59,6 +60,8 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-const { createFetchOptions, setSpotifyToken, spotifyFetch } = actions;
+const boundActions = bindActionCreators({ ...actions });
+const { createFetchOptions, spotifyFetch } = actions;
+const { setSpotifyToken } = boundActions;
 
 export { createFetchOptions, reducer, setSpotifyToken, spotifyFetch };
