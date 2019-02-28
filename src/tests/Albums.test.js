@@ -1,4 +1,3 @@
-import store from "../store";
 import { albums, setSpotifyToken } from "../index";
 import token from "../../token";
 
@@ -7,6 +6,5 @@ beforeAll(async () => {
 });
 
 describe.skip("2. Albums API", () => {
-  test("sample", async () => {
-  });
+  test("sample", async () => {});
 });

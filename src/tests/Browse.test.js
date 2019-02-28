@@ -1,4 +1,3 @@
-import store from "../store";
 import { browse, setSpotifyToken } from "../index";
 import token from "../../token";
 
@@ -169,7 +168,9 @@ describe("2. Browse API", () => {
         limit: 10,
         offset: 5
       };
-      const allFeaturedPlaylists = await browse.getAllFeaturedPlaylists(optional);
+      const allFeaturedPlaylists = await browse.getAllFeaturedPlaylists(
+        optional
+      );
       expect(allFeaturedPlaylists).toHaveProperty("playlists");
     });
   });
