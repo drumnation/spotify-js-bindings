@@ -18,7 +18,7 @@ $ npm install --save spotify-js-web-api
 ```
 
 ```js
-import { playlists, browse, setSpotifyToken, follow } from "spotify-js-web-api"
+import { browse, follow, playlists, search, setSpotifyToken } from "spotify-js-web-api"
 ```
 
 ### Retrieving and Setting Access Token
@@ -42,7 +42,7 @@ You will receive a `JSON` `error` `object` with a `401` `unauthorized` message b
 
 ---
 
-### [Playlists](#Playlists-API) API
+### **Playlists API**
 
 ---
 
@@ -50,7 +50,7 @@ You will receive a `JSON` `error` `object` with a `401` `unauthorized` message b
 
 ---
 
-### [Browse](#Browse-API) API
+### **Browse API**
 
 ---
 
@@ -65,7 +65,7 @@ You will receive a `JSON` `error` `object` with a `401` `unauthorized` message b
 
 ---
 
-### [Follow](#Follow-API) API
+### **Follow API**
 
 ---
 
@@ -75,6 +75,14 @@ You will receive a `JSON` `error` `object` with a `401` `unauthorized` message b
 4. [Get User's Followed Artists](#Get-User's-Followed-Artists)
 5. [Unfollow Artists or Users](#Unfollow-Artists–or–Users)
 6. [Unfollow Playlist](#Unfollow-Playlist)
+
+----
+
+### **Search API**
+
+---
+
+1. [Search for an Item](#Search-for-an-Item)
 
 ----
 
@@ -813,6 +821,7 @@ Aa `JSON array` of true or false values, in the `same` `order` in which the `ids
 
 > [Top](#Table-of-Contents)
 ---
+
 #### Check if Users Follow a Playlist
 
 Check to see if one or more Spotify users are following a specified playlist.
@@ -1019,6 +1028,89 @@ HTTP/1.1 200 OK
 The `HTTP` `status` `code` in the response header is `200` `OK` and the response body is empty.
 
 > [API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-unfollow-playlist)
+
+> [Top](#Table-of-Contents)
+
+---
+
+### **Search API**
+
+---
+#### Search for an Item
+
+Get Spotify Catalog information about artists, albums, tracks or playlists that match a keyword string.
+
+```js
+const query = "Muse";
+const type = "track,artist";
+const optional = {
+  market: "US",
+  limit: 10,
+  offset: 5
+};
+const response = await search.searchForItem(
+  query,
+  type,
+  optional
+);
+```
+##### Response
+
+<details><summary>json</summary>
+<p>
+
+```json
+{
+  "artists": {
+    "href": "https://api.spotify.com/v1/search?query=tania+bowra\u0026offset=0\u0026limit=20\u0026type=artist",
+    "items": [
+      {
+        "external_urls": {
+          "spotify": "https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q"
+        },
+        "genres": [],
+        "href": "https://api.spotify.com/v1/artists/08td7MxkoHQkXnWAYD8d6Q",
+        "id": "08td7MxkoHQkXnWAYD8d6Q",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/f2798ddab0c7b76dc2d270b65c4f67ddef7f6718",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/b414091165ea0f4172089c2fc67bb35aa37cfc55",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/8522fc78be4bf4e83fea8e67bb742e7d3dfe21b4",
+            "width": 64
+          }
+        ],
+        "name": "Tania Bowra",
+        "popularity": 0,
+        "type": "artist",
+        "uri": "spotify:artist:08td7MxkoHQkXnWAYD8d6Q"
+      }
+    ],
+    "limit": 20,
+    "next": null,
+    "offset": 0,
+    "previous": null,
+    "total": 1
+  }
+}
+```
+
+</p>
+</details>
+
+In the response header the `HTTP status code` is `200 OK`.
+
+The response `body` contains an `array` of `artist objects`, simplified `album objects`, and/or `track objects` wrapped in a `paging object` in `JSON`.
+
+> [API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-search)
 
 > [Top](#Table-of-Contents)
 ---

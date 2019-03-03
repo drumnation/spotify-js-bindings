@@ -1,12 +1,12 @@
 import { spotifyFetch } from "../redux";
-import { urls, httpMethods } from "../config/personalization";
+import { urls, httpMethods } from "../config/search";
 import bindActionCreators from "../helpers/actions";
 
 const searchForItem = (query, type, optional) => {
   return async dispatch => {
     const mergedOptional = {
       q: query,
-      type,
+      type: encodeURIComponent(type),
       ...optional
     };
     return dispatch(
