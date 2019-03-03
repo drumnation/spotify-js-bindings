@@ -18,7 +18,7 @@ $ npm install --save spotify-js-web-api
 ```
 
 ```js
-import { playlists, browse } from "spotify-js-web-api"
+import { playlists, browse, setSpotifyToken, follow } from "spotify-js-web-api"
 ```
 
 ### Retrieving and Setting Access Token
@@ -42,7 +42,7 @@ You will receive a `JSON` `error` `object` with a `401` `unauthorized` message b
 
 ---
 
-### [Playlists API](#Playlists-API)
+### [Playlists](#Playlists-API) API
 
 ---
 
@@ -50,7 +50,7 @@ You will receive a `JSON` `error` `object` with a `401` `unauthorized` message b
 
 ---
 
-### [Browse API](#Browse-API)
+### [Browse](#Browse-API) API
 
 ---
 
@@ -65,8 +65,22 @@ You will receive a `JSON` `error` `object` with a `401` `unauthorized` message b
 
 ---
 
-## Instructions
+### [Follow](#Follow-API) API
 
+---
+
+1. [Get Following State for Artists/Users](#Get-Following-State-for-Artists/Users)
+2. [Check if Users Follow a Playlist](#Check-if-Users-Follow-a-Playlist)
+3. [Follow Artists or Users](#Follow-Artists-or-Users)
+4. [Get User's Followed Artists](#Get-User's-Followed-Artists)
+5. [Unfollow Artists or Users](#Unfollow-Artists–or–Users)
+6. [Unfollow Playlist](#Unfollow-Playlist)
+
+----
+
+
+
+## Instructions
 
 ### About Query Arguments
 
@@ -110,6 +124,8 @@ const snapshot = playlists.addTracksToPlaylist(playlistId, optional);
 A `snapshot_id` in `JSON` format. The `snapshot_id` can be used to identify your playlist version in future requests.
 
 > [API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-add-tracks-to-playlist)
+
+> [Top](#Table-of-Contents)
 ---
 
 ### **Browse API**
@@ -200,6 +216,7 @@ const allCategories = await browse.getAllCategories(optional);
 
 > [API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-categories)
 
+> [Top](#Table-of-Contents)
 ---
 
 #### Get Single Category
@@ -243,6 +260,7 @@ A `category object` in `JSON` format.
 
 > [API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-a-category)
 
+> [Top](#Table-of-Contents)
 ---
 
 #### Get Category Playlists
@@ -341,6 +359,7 @@ An `array` of simplified `playlist objects` (wrapped in a `paging object`) in `J
 
 > [API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-a-categories-playlists)
 
+> [Top](#Table-of-Contents)
 ---
 
 #### Get Reccomendations Based on Seeds
@@ -504,6 +523,7 @@ A `recommendations` response `object` in `JSON` format.
 
 > [API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-recommendations)
 
+> [Top](#Table-of-Contents)
 ---
 
 #### Get Reccomendation Genres
@@ -551,6 +571,7 @@ A `recommendations` response `object` in `JSON` format.
 
 > [API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-recommendation-genres)
 
+> [Top](#Table-of-Contents)
 ---
 
 #### Get All New Releases
@@ -657,6 +678,7 @@ A `message` and an `albums object`. The `albums object` contains an `array` of s
 
 > [API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-new-releases)
 
+> [Top](#Table-of-Contents)
 ---
 
 #### Get All Featured Playlists
@@ -754,6 +776,251 @@ The `playlists object` contains an `array` of simplified `playlist objects` (wra
 
 >[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-featured-playlists)
 
+> [Top](#Table-of-Contents)
+---
+
+### **Follow API**
+
+---
+#### Get Following State for Artists/Users
+
+Check to see if the current user is following one or more artists or other Spotify users.
+
+```js
+const type = "artist";
+const ids =
+  "5U827e4jbYz6EjtN0fIDt9,2CIMQHirSU0MQqyYHq0eOx,1s4OwCgHh16FZOkmmNLWeO";
+const response = await follow.getFollowingStateForArtistsUsers(
+  type,
+  ids
+);
+```
+##### Response
+
+<details><summary>json</summary>
+<p>
+
+```json
+[ true ]
+```
+
+</p>
+</details>
+
+Aa `JSON array` of true or false values, in the `same` `order` in which the `ids` were specified.
+
+> [API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-check-current-user-follows)
+
+> [Top](#Table-of-Contents)
+---
+#### Check if Users Follow a Playlist
+
+Check to see if one or more Spotify users are following a specified playlist.
+
+```js
+const playlistId = "3cEYpjA9oz9GiPac4AsH4n";
+const ids = "jmperezperez,thelinmichael,wizzler";
+const response = await follow.checkIfUsersFollowPlaylist(
+  playlistId,
+  ids
+);
+```
+##### Response
+
+<details><summary>json</summary>
+<p>
+
+```json
+[ true, false ]
+```
+
+</p>
+</details>
+
+Aa `JSON array` of true or false values, in the `same` `order` in which the `ids` were specified.
+
+> [API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-check-if-user-follows-playlist)
+
+> [Top](#Table-of-Contents)
+---
+#### Follow Artists or Users
+
+Add the current user as a follower of one or more artists or other Spotify users.
+
+```js
+const type = "artist";
+const ids = "0AMoPrd9OLxMC38dQPnSQA,02umg9eoz6lshS5GVJ5KE0";
+const { status } = await follow.followArtistsOrUsers(type, ids);
+```
+##### Response
+
+<details><summary>json</summary>
+<p>
+
+```json
+HTTP/1.1 204 No Content
+```
+
+</p>
+</details>
+
+The `HTTP` `status` `code` in the response header is `204` `No` `Content` and the response body is empty.
+
+> [API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-follow-artists-users)
+
+> [Top](#Table-of-Contents)
+---
+#### Follow a Playlist
+
+Add the current user as a follower of a playlist.
+
+```js
+const playlistId = "2v3iNvBX8Ay1Gt2uXtUKUT";
+const body = { public: false };
+const { status } = await follow.followPlaylist(playlistId, body);
+```
+##### Response
+
+<details><summary>json</summary>
+<p>
+
+```json
+HTTP/1.1 200 OK
+```
+
+</p>
+</details>
+
+The `HTTP` `status` `code` in the response header is `200` `OK` and the response body is empty.
+
+> [API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-follow-playlist)
+
+> [Top](#Table-of-Contents)
+---
+#### Get User's Followed Artists
+
+Get the current user’s followed artists.
+
+```js
+const type = "artist";
+const optional = {
+  after: "0I2XqVXqHScXjHhk6AYYRe",
+  limit: 10
+}
+const followedArtists = await follow.getUserFollowedArtists(type, optional);
+```
+##### Response
+
+<details><summary>json</summary>
+<p>
+
+```json
+{
+  "artists" : {
+    "items" : [ {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/0I2XqVXqHScXjHhk6AYYRe"
+      },
+      "followers" : {
+        "href" : null,
+        "total" : 7753
+      },
+      "genres" : [ "swedish hip hop" ],
+      "href" : "https://api.spotify.com/v1/artists/0I2XqVXqHScXjHhk6AYYRe",
+      "id" : "0I2XqVXqHScXjHhk6AYYRe",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/2c8c0cea05bf3d3c070b7498d8d0b957c4cdec20",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/394302b42c4b894786943e028cdd46d7baaa29b7",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/ca9df7225ade6e5dfc62e7076709ca3409a7cbbf",
+        "width" : 64
+      } ],
+      "name" : "Afasi & Filthy",
+      "popularity" : 54,
+      "type" : "artist",
+      "uri" : "spotify:artist:0I2XqVXqHScXjHhk6AYYRe"
+  },{
+    ...
+  }],
+  "next" : "https://api.spotify.com/v1/users/thelinmichael/following?type=artist&after=0aV6DOiouImYTqrR5YlIqx&limit=20",
+  "total" : 183,
+    "cursors" : {
+      "after" : "0aV6DOiouImYTqrR5YlIqx"
+    },
+  "limit" : 20,
+  "href" : "https://api.spotify.com/v1/users/thelinmichael/following?type=artist&limit=20"
+  }
+}
+```
+
+</p>
+</details>
+
+The `HTTP status code` in the response header is `200 OK` and the response `body` contains an `artists object`. 
+The `artists object` in turn contains a `cursor-based paging object` of `Artists`. 
+
+> [API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-followed)
+
+> [Top](#Table-of-Contents)
+---
+#### Unfollow Artists or Users
+
+Remove the current user as a follower of one or more artists or other Spotify users.
+
+```js
+const type = "artist";
+const ids = "2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6";
+const { status } = await follow.unfollowArtistsOrUsers(type, ids);
+```
+##### Response
+
+<details><summary>json</summary>
+<p>
+
+```json
+HTTP/1.1 204 No Content
+```
+
+</p>
+</details>
+
+The `HTTP` `status` `code` in the response header is `204` `No` `Content` and the response body is empty.
+
+> [API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-unfollow-artists-users)
+
+> [Top](#Table-of-Contents)
+---
+#### Unfollow Playlist
+
+Remove the current user as a follower of a playlist.
+
+```js
+const playlistId = "3SnvUaB6Z9aaCZ2P6PEJvy";
+const { status } = await follow.unfollowPlaylist(playlistId);
+```
+##### Response
+
+<details><summary>json</summary>
+<p>
+
+```json
+HTTP/1.1 200 OK
+```
+
+</p>
+</details>
+
+The `HTTP` `status` `code` in the response header is `200` `OK` and the response body is empty.
+
+> [API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-unfollow-playlist)
+
+> [Top](#Table-of-Contents)
 ---
 
 ## License
