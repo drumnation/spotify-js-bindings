@@ -57,4 +57,15 @@ describe("Follow API", () => {
       expect(isSuccessful(status)).toBe(true);
     });
   });
+  describe("Follow API tests with optional params", () => {
+    test.only("Get Users Followed Artists", async () => {
+      const type = "artist";
+      const optional = {
+        after: "0I2XqVXqHScXjHhk6AYYRe",
+        limit: 10
+      }
+      const followedArtists = await follow.getUserFollowedArtists(type, optional);
+      expect(followedArtists).toHaveProperty("artists");
+    });
+  });
 });

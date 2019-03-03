@@ -1,3 +1,5 @@
+import './store'; // eslint-disable-line
+
 import { setSpotifyToken } from "./redux";
 
 import albums from "./actions/Albums";
