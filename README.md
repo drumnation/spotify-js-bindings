@@ -1132,18 +1132,13 @@ The response `body` contains an `array` of `artist objects`, simplified `album o
 Get the current user’s top artists or tracks based on calculated affinity.
 
 ```js
-const query = "Muse";
-const type = "track,artist";
+const type = "tracks"
 const optional = {
-  market: "US",
   limit: 10,
-  offset: 5
+  offset: 5,
+  timeRange: "long_term" // short_term - medium_term
 };
-const response = await search.searchForItem(
-  query,
-  type,
-  optional
-);
+const response = await personalization.getUserTopArtistsAndTracks(type, optional);
 ```
 ##### Response
 

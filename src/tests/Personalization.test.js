@@ -9,7 +9,6 @@ beforeAll(async () => {
 describe("Personalization API", () => {
   describe("Personalization API tests with no params", () => {
     test("Get a User's Top Artists and Tracks", async () => {
-      const query = "Muse";
       const type = "tracks";
       const response = await personalization.getUserTopArtistsAndTracks(type);
       expect(response).toHaveProperty("href");
@@ -19,11 +18,11 @@ describe("Personalization API", () => {
     test("Get a User's Top Artists and Tracks", async () => {
       const type = "tracks"
       const optional = {
-        limit: 20,
+        limit: 10,
         offset: 5,
-        timeRange: "longTerm" 
+        timeRange: "long_term" // short_term - medium_term
       };
-      const response = await personalization.getUserTopArtistsAndTracks(type);
+      const response = await personalization.getUserTopArtistsAndTracks(type, optional);
       expect(response).toHaveProperty("href");
     });
   });
