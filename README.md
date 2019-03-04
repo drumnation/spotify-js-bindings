@@ -140,7 +140,7 @@ A `snapshot_id` in `JSON` format. The `snapshot_id` can be used to identify your
 
 > [Top](#Table-of-Contents)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-add-tracks-to-playlist)
 
-
+--------------------------------------------------------------------------------
 
 ### **Browse API**
 
@@ -231,7 +231,7 @@ const allCategories = await browse.getAllCategories(optional);
 
 > [Top](#Table-of-Contents)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-categories)
 
-
+--------------------------------------------------------------------------------
 
 #### Get Single Category
 
@@ -274,7 +274,7 @@ A `category object` in `JSON` format.
 
 > [Top](#Table-of-Contents)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-a-category)
 
-
+--------------------------------------------------------------------------------
 
 #### Get Category Playlists
 
@@ -372,7 +372,7 @@ An `array` of simplified `playlist objects` (wrapped in a `paging object`) in `J
 
 > [Top](#Table-of-Contents)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-a-categories-playlists)
 
-
+--------------------------------------------------------------------------------
 
 #### Get Reccomendations Based on Seeds
 
@@ -535,7 +535,7 @@ A `recommendations` response `object` in `JSON` format.
 
 > [Top](#Table-of-Contents)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-recommendations)
 
-
+--------------------------------------------------------------------------------
 
 #### Get Reccomendation Genres
 
@@ -582,7 +582,7 @@ A `recommendations` response `object` in `JSON` format.
 
 > [Top](#Table-of-Contents)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-recommendation-genres)
 
-
+--------------------------------------------------------------------------------
 
 #### Get All New Releases
 
@@ -688,7 +688,7 @@ A `message` and an `albums object`. The `albums object` contains an `array` of s
 
 > [Top](#Table-of-Contents)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-new-releases)
 
-
+--------------------------------------------------------------------------------
 
 #### Get All Featured Playlists
 
@@ -785,7 +785,7 @@ The `playlists object` contains an `array` of simplified `playlist objects` (wra
 
 > [Top](#Table-of-Contents)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-featured-playlists)
 
-
+--------------------------------------------------------------------------------
 
 ### **Follow API**
 
@@ -821,6 +821,8 @@ Aa `JSON array` of true or false values, in the `same` `order` in which the `ids
 
 > [Top](#Table-of-Contents)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-check-current-user-follows)
 
+--------------------------------------------------------------------------------
+
 #### Check if Users Follow a Playlist
 
 Check to see if one or more Spotify users are following a specified playlist.
@@ -850,6 +852,8 @@ Aa `JSON array` of true or false values, in the `same` `order` in which the `ids
 
 > [Top](#Table-of-Contents)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-check-if-user-follows-playlist)
 
+--------------------------------------------------------------------------------
+
 #### Follow Artists or Users
 
 Add the current user as a follower of one or more artists or other Spotify users.
@@ -876,9 +880,9 @@ The `HTTP` `status` `code` in the response header is `204` `No` `Content` and th
 
 > [Top](#Table-of-Contents)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-follow-artists-users)
 
+--------------------------------------------------------------------------------
 
-
-> #### Follow a Playlist
+#### Follow a Playlist
 
 Add the current user as a follower of a playlist.
 
@@ -904,9 +908,9 @@ The `HTTP` `status` `code` in the response header is `200` `OK` and the response
 
 > [Top](#Table-of-Contents)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-follow-playlist)
 
+--------------------------------------------------------------------------------
 
-
-> #### Get User's Followed Artists
+#### Get User's Followed Artists
 
 Get the current user's followed artists.
 
@@ -976,6 +980,8 @@ The `HTTP status code` in the response header is `200 OK` and the response `body
 
 > [Top](#Table-of-Contents)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-followed)
 
+--------------------------------------------------------------------------------
+
 #### Unfollow Artists or Users
 
 Remove the current user as a follower of one or more artists or other Spotify users.
@@ -1002,6 +1008,8 @@ The `HTTP` `status` `code` in the response header is `204` `No` `Content` and th
 
 > [Top](#Table-of-Contents)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-unfollow-artists-users)
 
+--------------------------------------------------------------------------------
+
 #### Unfollow Playlist
 
 Remove the current user as a follower of a playlist.
@@ -1026,8 +1034,6 @@ HTTP/1.1 200 OK
 The `HTTP` `status` `code` in the response header is `200` `OK` and the response body is empty.
 
 > [Top](#Table-of-Contents)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-unfollow-playlist)
-
-
 
 --------------------------------------------------------------------------------
 
@@ -1186,8 +1192,6 @@ In the response header the `HTTP status code` is `200 OK`.
 The response `body` contains an `array` of `artist` or `track` objects `wrapped` in a `paging object` in `JSON`.
 
 > [Top](#Table-of-Contents)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-users-top-artists-and-tracks)
-
-
 
 --------------------------------------------------------------------------------
 
