@@ -86,6 +86,14 @@ You will receive a `JSON` `error` `object` with a `401` `unauthorized` message b
 
 ----
 
+### **Personalization API**
+
+---
+
+1. [Get a User's Top Artists and Tracks](#Get-a-User's-Top-Artists-and-Tracks)
+
+----
+
 
 
 ## Instructions
@@ -1113,6 +1121,87 @@ The response `body` contains an `array` of `artist objects`, simplified `album o
 > [API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-search)
 
 > [Top](#Table-of-Contents)
+
+---
+
+### **Personalization API**
+
+---
+#### Get a User's Top Artists and Tracks
+
+Get the current user’s top artists or tracks based on calculated affinity.
+
+```js
+const query = "Muse";
+const type = "track,artist";
+const optional = {
+  market: "US",
+  limit: 10,
+  offset: 5
+};
+const response = await search.searchForItem(
+  query,
+  type,
+  optional
+);
+```
+##### Response
+
+<details><summary>json</summary>
+<p>
+
+```json
+{
+  "items" : [ {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/0I2XqVXqHScXjHhk6AYYRe"
+    },
+    "followers" : {
+      "href" : null,
+      "total" : 7753
+    },
+    "genres" : [ "swedish hip hop" ],
+    "href" : "https://api.spotify.com/v1/artists/0I2XqVXqHScXjHhk6AYYRe",
+    "id" : "0I2XqVXqHScXjHhk6AYYRe",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/2c8c0cea05bf3d3c070b7498d8d0b957c4cdec20",
+      "width" : 640
+    }, {
+      "height" : 300,
+      "url" : "https://i.scdn.co/image/394302b42c4b894786943e028cdd46d7baaa29b7",
+      "width" : 300
+    }, {
+      "height" : 64,
+      "url" : "https://i.scdn.co/image/ca9df7225ade6e5dfc62e7076709ca3409a7cbbf",
+      "width" : 64
+    } ],
+    "name" : "Afasi & Filthy",
+    "popularity" : 54,
+    "type" : "artist",
+    "uri" : "spotify:artist:0I2XqVXqHScXjHhk6AYYRe"
+  },{
+  ...
+  }],
+  "next" : "https://api.spotify.com/v1/me/top/artists?offset=20",
+  "previous" : null,
+  "total" : 50,
+  "limit" : 20,
+  "href" : "https://api.spotify.com/v1/me/top/artists"
+}
+```
+
+</p>
+</details>
+
+In the response header the `HTTP status code` is `200 OK`.
+
+The response `body` contains an `array` of `artist` or `track` objects `wrapped` in a `paging object` in `JSON`.
+
+> [API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-users-top-artists-and-tracks)
+
+> [Top](#Table-of-Contents)
+
 ---
 
 ## License
