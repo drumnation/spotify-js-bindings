@@ -1,15 +1,14 @@
 # Spotify-js-web-api
 
-[![NPM version](https://img.shields.io/npm/v/generator-nod.svg?style=flat-square)](https://npmjs.org/package/generator-nod)
-[![Build Status](https://img.shields.io/travis/diegohaz/nod/master.svg?style=flat-square)](https://travis-ci.org/diegohaz/nod) [![Coverage Status](https://img.shields.io/codecov/c/github/diegohaz/nod/master.svg?style=flat-square)](https://codecov.io/gh/diegohaz/nod/branch/master)
+[![NPM version](https://img.shields.io/npm/v/generator-nod.svg?style=flat-square)](https://npmjs.org/package/generator-nod) [![Build Status](https://img.shields.io/travis/diegohaz/nod/master.svg?style=flat-square)](https://travis-ci.org/diegohaz/nod) [![Coverage Status](https://img.shields.io/codecov/c/github/diegohaz/nod/master.svg?style=flat-square)](https://codecov.io/gh/diegohaz/nod/branch/master)
 
 Async+Await / ES6 JavaScript bindings for Spotify.
 
----
+--------------------------------------------------------------------------------
 
 ![spotify-logo](spotify-logo.png)
 
----
+--------------------------------------------------------------------------------
 
 ## Install
 
@@ -17,7 +16,7 @@ Async+Await / ES6 JavaScript bindings for Spotify.
 $ npm install --save spotify-js-web-api
 ```
 
-```js
+```javascript
 import { browse, follow, playlists, search, setSpotifyToken } from "spotify-js-web-api"
 ```
 
@@ -27,32 +26,32 @@ Retrieve your Spotify Developer `OAuth Token`. You can generate a `temporary tok
 
 When your app `first` `loads`, use this `function` to `set` your `auth` token.
 
-```js
+```javascript
 const token = "BQBrnKyWwLDnsbrnw9J3xnCSR-1jlyXhtFrgVm5dWnWlWoaqj1bx0ZqAlarYSO4QSQgCBjt60ynmrT27n5RJdyfJNkdwNwTyXnIQNLjvhIxVdhk1sUiHjaqGzHe4tST7dijYu1Z3FyZVv_uzIcqPn_sY-p7kPXTHMatFOpVONtUr6Sc3kEZva1Nmy58B8jVVlQVOWZ0efwnne3TenIbZ2bcfHpmvm6j-B-NCb_kB32UgyMHMlsAxMssYIq8SY5SGwaRfmFZFlpTBOhrZWw";
 Spotify.setSpotifyToken(token);
 ```
 
 You will receive a `JSON` `error` `object` with a `401` `unauthorized` message back from Spotify if your `temporary` `key` `expires` or you `do` `not` `set` `one` prior to running your API call.
 
----
+--------------------------------------------------------------------------------
 
 ## API
 
-#### Table of Contents
+### Table of Contents
 
----
+--------------------------------------------------------------------------------
 
 ### **Playlists API**
 
----
+--------------------------------------------------------------------------------
 
 1. [Get All Categories](#Get-All-Categories)
 
----
+--------------------------------------------------------------------------------
 
 ### **Browse API**
 
----
+--------------------------------------------------------------------------------
 
 1. [Get All Categories](#Get-All-Categories)
 2. [Get Single Category](#Get-Single-Category)
@@ -63,11 +62,11 @@ You will receive a `JSON` `error` `object` with a `401` `unauthorized` message b
 7. [Get All New Releases](#Get-All-New-Releases)
 8. [Get All Featured Playlists](#Get-All-Featured-Playlists)
 
----
+--------------------------------------------------------------------------------
 
 ### **Follow API**
 
----
+--------------------------------------------------------------------------------
 
 1. [Get Following State for Artists/Users](#Get-Following-State-for-Artists/Users)
 2. [Check if Users Follow a Playlist](#Check-if-Users-Follow-a-Playlist)
@@ -76,48 +75,47 @@ You will receive a `JSON` `error` `object` with a `401` `unauthorized` message b
 5. [Unfollow Artists or Users](#Unfollow-Artists–or–Users)
 6. [Unfollow Playlist](#Unfollow-Playlist)
 
-----
+--------------------------------------------------------------------------------
 
 ### **Search API**
 
----
+--------------------------------------------------------------------------------
 
 1. [Search for an Item](#Search-for-an-Item)
 
-----
+--------------------------------------------------------------------------------
 
 ### **Personalization API**
 
----
+--------------------------------------------------------------------------------
 
 1. [Get a User's Top Artists and Tracks](#Get-a-User's-Top-Artists-and-Tracks)
 
-----
-
-
+--------------------------------------------------------------------------------
 
 ## Instructions
 
 ### About Query Arguments
 
-When creating your query data, the main `arguments` are `required` parameters, `optional` are optional query parameters. 
+When creating your query data, the main `arguments` are `required` parameters, `optional` are optional query parameters.
 
 Functions that do `not` have `required` parameters can be executed `without` `arguments`.
 
----
+--------------------------------------------------------------------------------
 
 ### **Playlists API**
 
----
+--------------------------------------------------------------------------------
+
 #### Add Tracks to a Playlist
 
-Add one or more tracks to a user’s playlist.
+Add one or more tracks to a user's playlist.
 
->  The position to insert the tracks, a zero-based index. If position is omitted, the tracks will be appended to the playlist. 
+> The position to insert the tracks, a zero-based index. If position is omitted, the tracks will be appended to the playlist.
 
 Tracks are added in the order they are listed in the query string or request body.
 
-```js
+```javascript
 const playlistId = "3cEYpjA9oz9GiPac4AsH4n";
 const optional = {
   uris: "spotify:track:4iV5W9uYEdYUVa79Axb7Rh,spotify:track:1301WleyT98MSxVHPZCA6M",
@@ -125,33 +123,32 @@ const optional = {
 };
 const snapshot = playlists.addTracksToPlaylist(playlistId, optional);
 ```
+
 ##### Response
 
-<details><summary>json</summary>
-<p>
-
-```json
-{"snapshot_id":"JbtmHBDBAYu3/bt8BOXKjzKx3i0b6LCa/wVjyl6qQ2Yf6nFXkbmzuEa+ZI/U1yF+"}
-```
-
+<details>
+  <summary>json</summary>
+  <p>
+  <code>json
+{"snapshot_id":"JbtmHBDBAYu3/bt8BOXKjzKx3i0b6LCa/wVjyl6qQ2Yf6nFXkbmzuEa+ZI/U1yF+"}</code>
 </p>
 </details>
 
 A `snapshot_id` in `JSON` format. The `snapshot_id` can be used to identify your playlist version in future requests.
 
-> [API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-add-tracks-to-playlist)
+> [Top](#Table-of-Contents)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-add-tracks-to-playlist)
 
-> [Top](#Table-of-Contents)
----
+
 
 ### **Browse API**
 
----
+--------------------------------------------------------------------------------
+
 #### Get All Categories
 
-Get a list of categories used to tag items in Spotify (on, for example, the Spotify player’s “Browse” tab).
+Get a list of categories used to tag items in Spotify (on, for example, the Spotify player's "Browse" tab).
 
-```js
+```javascript
 const optional = {
   country: "MX",
   locale: "es_MX",
@@ -163,13 +160,13 @@ const allCategories = await browse.getAllCategories(optional);
 
 ##### Response
 
-<details><summary>json</summary>
-<p>
-
-```json
+<details>
+  <summary>json</summary>
+  <p>
+  <code>json
 {
   "categories" : {
-    "href" : "https://api.spotify.com/v1/browse/categories?offset=0&limit=20",
+    "href" : "https://api.spotify.com/v1/browse/categories?offset=0&amp;limit=20",
     "items" : [ {
       "href" : "https://api.spotify.com/v1/browse/categories/toplists",
       "icons" : [ {
@@ -217,29 +214,26 @@ const allCategories = await browse.getAllCategories(optional);
       "name" : "Workout"
     }, ... ],
     "limit" : 20,
-    "next" : "https://api.spotify.com/v1/browse/categories?offset=20&limit=20",
+    "next" : "https://api.spotify.com/v1/browse/categories?offset=20&amp;limit=20",
     "offset" : 0,
     "previous" : null,
     "total" : 31
   }
-}
-```
-
+}</code>
 </p>
 </details>
 
 `JSON Object` with a `categories field` and an `array` of `category objects` (wrapped in a `paging object`).
 
-> [API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-categories)
+> [Top](#Table-of-Contents)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-categories)
 
-> [Top](#Table-of-Contents)
----
+
 
 #### Get Single Category
 
-Get a single category used to tag items in Spotify (on, for example, the Spotify player’s “Browse” tab).
+Get a single category used to tag items in Spotify (on, for example, the Spotify player's "Browse" tab).
 
-```js
+```javascript
 const categoryId = "dinner";
 const optional = {
   country: "SE",
@@ -253,10 +247,10 @@ const aSingleBrowseCategory = await browse.getSingleBrowseCategory(
 
 ##### Response
 
-<details><summary>json</summary>
-<p>
-
-```json
+<details>
+  <summary>json</summary>
+  <p>
+  <code>json
 {
   "href" : "https://api.spotify.com/v1/browse/categories/party",
   "icons" : [ {
@@ -266,24 +260,21 @@ const aSingleBrowseCategory = await browse.getSingleBrowseCategory(
   } ],
   "id" : "party",
   "name" : "Party"
-}
-```
-
+}</code>
 </p>
 </details>
 
 A `category object` in `JSON` format.
 
-> [API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-a-category)
+> [Top](#Table-of-Contents)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-a-category)
 
-> [Top](#Table-of-Contents)
----
+
 
 #### Get Category Playlists
 
 Get a list of Spotify playlists tagged with a particular category.
 
-```js
+```javascript
 const categoryId = "metal";
 
 const categoryPlaylists = await browse.getCategoryPlaylists(categoryId, optional);
@@ -291,13 +282,13 @@ const categoryPlaylists = await browse.getCategoryPlaylists(categoryId, optional
 
 ##### Response
 
-<details><summary>json</summary>
-<p>
-
-```json
+<details>
+  <summary>json</summary>
+  <p>
+  <code>json
 {
   "playlists" : {
-    "href" : "https://api.spotify.com/v1/browse/categories/party/playlists?country=BR&offset=0&limit=2",
+    "href" : "https://api.spotify.com/v1/browse/categories/party/playlists?country=BR&amp;offset=0&amp;limit=2",
     "items" : [ {
       "collaborative" : false,
       "external_urls" : {
@@ -360,23 +351,20 @@ const categoryPlaylists = await browse.getCategoryPlaylists(categoryId, optional
       "uri" : "spotify:user:spotifybrazilian:playlist:4HZh0C9y80GzHDbHZyX770"
     } ],
     "limit" : 2,
-    "next" : "https://api.spotify.com/v1/browse/categories/party/playlists?country=BR&offset=2&limit=2",
+    "next" : "https://api.spotify.com/v1/browse/categories/party/playlists?country=BR&amp;offset=2&amp;limit=2",
     "offset" : 0,
     "previous" : null,
     "total" : 86
   }
-}
-```
-
+}</code>
 </p>
 </details>
 
 An `array` of simplified `playlist objects` (wrapped in a `paging object`) in `JSON` format.
 
-> [API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-a-categories-playlists)
+> [Top](#Table-of-Contents)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-a-categories-playlists)
 
-> [Top](#Table-of-Contents)
----
+
 
 #### Get Reccomendations Based on Seeds
 
@@ -384,7 +372,7 @@ Recommendations are generated based on the available information for a given see
 
 For artists and tracks that are very new or obscure there might not be enough data to generate a list of tracks.
 
-```js
+```javascript
 const seedArtists = "4NHQUGzhtTLFvgF5SZesLK";
 const seedGenres = "classical,country";
 const seedTracks = "0c6xIDDpzE81m2q797ordA";
@@ -444,10 +432,10 @@ const reccomendations = await browse.getReccomendations(
 
 ##### Response
 
-<details><summary>json</summary>
-<p>
-
-```json
+<details>
+  <summary>json</summary>
+  <p>
+  <code>json
 {
   "tracks": [
     {
@@ -529,24 +517,21 @@ const reccomendations = await browse.getReccomendations(
       "type": "track"
     }
   ]
-}
-```
-
+}</code>
 </p>
 </details>
 
 A `recommendations` response `object` in `JSON` format.
 
-> [API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-recommendations)
+> [Top](#Table-of-Contents)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-recommendations)
 
-> [Top](#Table-of-Contents)
----
+
 
 #### Get Reccomendation Genres
 
 Retrieve a list of available genres seed parameter values for recommendations.
 
-```js
+```javascript
 const optional = {
   country: "US",
   limit: 10,
@@ -559,10 +544,10 @@ const reccomendationGenres = await browse.getReccomendationGenres(optional);
 
 A `recommendations` response `object` in `JSON` format.
 
-<details><summary>json</summary>
-<p>
-
-```json
+<details>
+  <summary>json</summary>
+  <p>
+  <code>json
 {
     "genres": [
       "alt_rock",
@@ -579,34 +564,31 @@ A `recommendations` response `object` in `JSON` format.
        .....
        .....
        ..... ]
-}
-```
-
+}</code>
 </p>
 </details>
 
-> [API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-recommendation-genres)
+> [Top](#Table-of-Contents)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-recommendation-genres)
 
-> [Top](#Table-of-Contents)
----
+
 
 #### Get All New Releases
 
-Get a list of new album releases featured in Spotify (shown, for example, on a Spotify player’s “Browse” tab).
+Get a list of new album releases featured in Spotify (shown, for example, on a Spotify player's "Browse" tab).
 
-```js
+```javascript
 const allNewReleases = await getAllNewReleases();
 ```
 
 ##### Response
 
-<details><summary>json</summary>
-<p>
-
-```json
+<details>
+  <summary>json</summary>
+  <p>
+  <code>json
 {
   "albums" : {
-    "href" : "https://api.spotify.com/v1/browse/new-releases?country=SE&offset=0&limit=20",
+    "href" : "https://api.spotify.com/v1/browse/new-releases?country=SE&amp;offset=0&amp;limit=20",
     "items" : [ {
       "album_type" : "single",
       "artists" : [ {
@@ -679,42 +661,39 @@ const allNewReleases = await getAllNewReleases();
     ...
     } ],
     "limit" : 20,
-    "next" : "https://api.spotify.com/v1/browse/new-releases?country=SE&offset=20&limit=20",
+    "next" : "https://api.spotify.com/v1/browse/new-releases?country=SE&amp;offset=20&amp;limit=20",
     "offset" : 0,
     "previous" : null,
     "total" : 500
   }
-}
-```
-
+}</code>
 </p>
 </details>
 
 A `message` and an `albums object`. The `albums object` contains an `array` of simplified `album objects` (wrapped in a `paging object`) in `JSON` format.
 
-> [API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-new-releases)
+> [Top](#Table-of-Contents)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-new-releases)
 
-> [Top](#Table-of-Contents)
----
+
 
 #### Get All Featured Playlists
 
-Get a list of Spotify featured playlists (shown, for example, on a Spotify player’s ‘Browse’ tab).
+Get a list of Spotify featured playlists (shown, for example, on a Spotify player's 'Browse' tab).
 
-```js
+```javascript
 const allFeaturedPlaylists = await getAllFeaturedPlaylists();
 ```
 
 ##### Response
 
-<details><summary>json</summary>
-<p>
-
-```json
+<details>
+  <summary>json</summary>
+  <p>
+  <code>json
 {
   "message" : "Monday morning music, coming right up!",
   "playlists" : {
-    "href" : "https://api.spotify.com/v1/browse/featured-playlists?country=SE&timestamp=2015-05-18T06:44:32&offset=0&limit=2",
+    "href" : "https://api.spotify.com/v1/browse/featured-playlists?country=SE&amp;timestamp=2015-05-18T06:44:32&amp;offset=0&amp;limit=2",
     "items" : [ {
       "collaborative" : false,
       "external_urls" : {
@@ -777,32 +756,30 @@ const allFeaturedPlaylists = await getAllFeaturedPlaylists();
       "uri" : "spotify:user:spotify__sverige:playlist:4uOEx4OUrkoGNZoIlWMUbO"
     } ],
     "limit" : 2,
-    "next" : "https://api.spotify.com/v1/browse/featured-playlists?country=SE&timestamp=2015-05-18T06:44:32&offset=2&limit=2",
+    "next" : "https://api.spotify.com/v1/browse/featured-playlists?country=SE&amp;timestamp=2015-05-18T06:44:32&amp;offset=2&amp;limit=2",
     "offset" : 0,
     "previous" : null,
     "total" : 12
   }
-}
-```
-
+}</code>
 </p>
 </details>
 
 The `playlists object` contains an `array` of simplified `playlist objects` (wrapped in a `paging object`) in `JSON` format.
 
->[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-featured-playlists)
+> [Top](#Table-of-Contents)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-featured-playlists)
 
-> [Top](#Table-of-Contents)
----
+
 
 ### **Follow API**
 
----
+--------------------------------------------------------------------------------
+
 #### Get Following State for Artists/Users
 
 Check to see if the current user is following one or more artists or other Spotify users.
 
-```js
+```javascript
 const type = "artist";
 const ids =
   "5U827e4jbYz6EjtN0fIDt9,2CIMQHirSU0MQqyYHq0eOx,1s4OwCgHh16FZOkmmNLWeO";
@@ -811,30 +788,26 @@ const response = await follow.getFollowingStateForArtistsUsers(
   ids
 );
 ```
+
 ##### Response
 
-<details><summary>json</summary>
-<p>
-
-```json
-[ true ]
-```
-
+<details>
+  <summary>json</summary>
+  <p>
+  <code>json
+[ true ]</code>
 </p>
 </details>
 
 Aa `JSON array` of true or false values, in the `same` `order` in which the `ids` were specified.
 
-> [API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-check-current-user-follows)
-
-> [Top](#Table-of-Contents)
----
+> [Top](#Table-of-Contents)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-check-current-user-follows)
 
 #### Check if Users Follow a Playlist
 
 Check to see if one or more Spotify users are following a specified playlist.
 
-```js
+```javascript
 const playlistId = "3cEYpjA9oz9GiPac4AsH4n";
 const ids = "jmperezperez,thelinmichael,wizzler";
 const response = await follow.checkIfUsersFollowPlaylist(
@@ -842,83 +815,78 @@ const response = await follow.checkIfUsersFollowPlaylist(
   ids
 );
 ```
+
 ##### Response
 
-<details><summary>json</summary>
-<p>
-
-```json
-[ true, false ]
-```
-
+<details>
+  <summary>json</summary>
+  <p>
+  <code>json
+[ true, false ]</code>
 </p>
 </details>
 
 Aa `JSON array` of true or false values, in the `same` `order` in which the `ids` were specified.
 
-> [API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-check-if-user-follows-playlist)
+> [Top](#Table-of-Contents)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-check-if-user-follows-playlist)
 
-> [Top](#Table-of-Contents)
----
 #### Follow Artists or Users
 
 Add the current user as a follower of one or more artists or other Spotify users.
 
-```js
+```javascript
 const type = "artist";
 const ids = "0AMoPrd9OLxMC38dQPnSQA,02umg9eoz6lshS5GVJ5KE0";
 const { status } = await follow.followArtistsOrUsers(type, ids);
 ```
+
 ##### Response
 
-<details><summary>json</summary>
-<p>
-
-```json
-HTTP/1.1 204 No Content
-```
-
+<details>
+  <summary>json</summary>
+  <p>
+  <code>json
+HTTP/1.1 204 No Content</code>
 </p>
 </details>
 
 The `HTTP` `status` `code` in the response header is `204` `No` `Content` and the response body is empty.
 
-> [API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-follow-artists-users)
+> [Top](#Table-of-Contents)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-follow-artists-users)
 
-> [Top](#Table-of-Contents)
----
-#### Follow a Playlist
+
+
+> #### Follow a Playlist
 
 Add the current user as a follower of a playlist.
 
-```js
+```javascript
 const playlistId = "2v3iNvBX8Ay1Gt2uXtUKUT";
 const body = { public: false };
 const { status } = await follow.followPlaylist(playlistId, body);
 ```
+
 ##### Response
 
-<details><summary>json</summary>
-<p>
-
-```json
-HTTP/1.1 200 OK
-```
-
+<details>
+  <summary>json</summary>
+  <p>
+  <code>json
+HTTP/1.1 200 OK</code>
 </p>
 </details>
 
 The `HTTP` `status` `code` in the response header is `200` `OK` and the response body is empty.
 
-> [API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-follow-playlist)
+> [Top](#Table-of-Contents)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-follow-playlist)
 
-> [Top](#Table-of-Contents)
----
-#### Get User's Followed Artists
 
-Get the current user’s followed artists.
 
-```js
+> #### Get User's Followed Artists
+
+Get the current user's followed artists.
+
+```javascript
 const type = "artist";
 const optional = {
   after: "0I2XqVXqHScXjHhk6AYYRe",
@@ -926,12 +894,13 @@ const optional = {
 }
 const followedArtists = await follow.getUserFollowedArtists(type, optional);
 ```
+
 ##### Response
 
-<details><summary>json</summary>
-<p>
-
-```json
+<details>
+  <summary>json</summary>
+  <p>
+  <code>json
 {
   "artists" : {
     "items" : [ {
@@ -958,97 +927,89 @@ const followedArtists = await follow.getUserFollowedArtists(type, optional);
         "url" : "https://i.scdn.co/image/ca9df7225ade6e5dfc62e7076709ca3409a7cbbf",
         "width" : 64
       } ],
-      "name" : "Afasi & Filthy",
+      "name" : "Afasi &amp; Filthy",
       "popularity" : 54,
       "type" : "artist",
       "uri" : "spotify:artist:0I2XqVXqHScXjHhk6AYYRe"
   },{
     ...
   }],
-  "next" : "https://api.spotify.com/v1/users/thelinmichael/following?type=artist&after=0aV6DOiouImYTqrR5YlIqx&limit=20",
+  "next" : "https://api.spotify.com/v1/users/thelinmichael/following?type=artist&amp;after=0aV6DOiouImYTqrR5YlIqx&amp;limit=20",
   "total" : 183,
     "cursors" : {
       "after" : "0aV6DOiouImYTqrR5YlIqx"
     },
   "limit" : 20,
-  "href" : "https://api.spotify.com/v1/users/thelinmichael/following?type=artist&limit=20"
+  "href" : "https://api.spotify.com/v1/users/thelinmichael/following?type=artist&amp;limit=20"
   }
-}
-```
-
+}</code>
 </p>
 </details>
 
-The `HTTP status code` in the response header is `200 OK` and the response `body` contains an `artists object`. 
-The `artists object` in turn contains a `cursor-based paging object` of `Artists`. 
+The `HTTP status code` in the response header is `200 OK` and the response `body` contains an `artists object`. The `artists object` in turn contains a `cursor-based paging object` of `Artists`.
 
-> [API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-followed)
+> [Top](#Table-of-Contents)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-followed)
 
-> [Top](#Table-of-Contents)
----
 #### Unfollow Artists or Users
 
 Remove the current user as a follower of one or more artists or other Spotify users.
 
-```js
+```javascript
 const type = "artist";
 const ids = "2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6";
 const { status } = await follow.unfollowArtistsOrUsers(type, ids);
 ```
+
 ##### Response
 
-<details><summary>json</summary>
-<p>
-
-```json
-HTTP/1.1 204 No Content
-```
-
+<details>
+  <summary>json</summary>
+  <p>
+  <code>json
+HTTP/1.1 204 No Content</code>
 </p>
 </details>
 
 The `HTTP` `status` `code` in the response header is `204` `No` `Content` and the response body is empty.
 
-> [API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-unfollow-artists-users)
+> [Top](#Table-of-Contents)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-unfollow-artists-users)
 
-> [Top](#Table-of-Contents)
----
 #### Unfollow Playlist
 
 Remove the current user as a follower of a playlist.
 
-```js
+```javascript
 const playlistId = "3SnvUaB6Z9aaCZ2P6PEJvy";
 const { status } = await follow.unfollowPlaylist(playlistId);
 ```
+
 ##### Response
 
-<details><summary>json</summary>
-<p>
-
-```json
-HTTP/1.1 200 OK
-```
-
+<details>
+  <summary>json</summary>
+  <p>
+  <code>json
+HTTP/1.1 200 OK</code>
 </p>
 </details>
 
 The `HTTP` `status` `code` in the response header is `200` `OK` and the response body is empty.
 
-> [API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-unfollow-playlist)
+> [Top](#Table-of-Contents)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-unfollow-playlist)
 
-> [Top](#Table-of-Contents)
 
----
+
+--------------------------------------------------------------------------------
 
 ### **Search API**
 
----
+--------------------------------------------------------------------------------
+
 #### Search for an Item
 
 Get Spotify Catalog information about artists, albums, tracks or playlists that match a keyword string.
 
-```js
+```javascript
 const query = "Muse";
 const type = "track,artist";
 const optional = {
@@ -1062,12 +1023,13 @@ const response = await search.searchForItem(
   optional
 );
 ```
+
 ##### Response
 
-<details><summary>json</summary>
-<p>
-
-```json
+<details>
+  <summary>json</summary>
+  <p>
+  <code>json
 {
   "artists": {
     "href": "https://api.spotify.com/v1/search?query=tania+bowra\u0026offset=0\u0026limit=20\u0026type=artist",
@@ -1108,9 +1070,7 @@ const response = await search.searchForItem(
     "previous": null,
     "total": 1
   }
-}
-```
-
+}</code>
 </p>
 </details>
 
@@ -1118,20 +1078,19 @@ In the response header the `HTTP status code` is `200 OK`.
 
 The response `body` contains an `array` of `artist objects`, simplified `album objects`, and/or `track objects` wrapped in a `paging object` in `JSON`.
 
-> [API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-search)
+> [Top](#Table-of-Contents)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-search)
 
-> [Top](#Table-of-Contents)
-
----
+--------------------------------------------------------------------------------
 
 ### **Personalization API**
 
----
+--------------------------------------------------------------------------------
+
 #### Get a User's Top Artists and Tracks
 
-Get the current user’s top artists or tracks based on calculated affinity.
+Get the current user's top artists or tracks based on calculated affinity.
 
-```js
+```javascript
 const type = "tracks"
 const optional = {
   limit: 10,
@@ -1140,12 +1099,13 @@ const optional = {
 };
 const response = await personalization.getUserTopArtistsAndTracks(type, optional);
 ```
+
 ##### Response
 
-<details><summary>json</summary>
-<p>
-
-```json
+<details>
+  <summary>json</summary>
+  <p>
+  <code>json
 {
   "items" : [ {
     "external_urls" : {
@@ -1171,7 +1131,7 @@ const response = await personalization.getUserTopArtistsAndTracks(type, optional
       "url" : "https://i.scdn.co/image/ca9df7225ade6e5dfc62e7076709ca3409a7cbbf",
       "width" : 64
     } ],
-    "name" : "Afasi & Filthy",
+    "name" : "Afasi &amp; Filthy",
     "popularity" : 54,
     "type" : "artist",
     "uri" : "spotify:artist:0I2XqVXqHScXjHhk6AYYRe"
@@ -1183,9 +1143,7 @@ const response = await personalization.getUserTopArtistsAndTracks(type, optional
   "total" : 50,
   "limit" : 20,
   "href" : "https://api.spotify.com/v1/me/top/artists"
-}
-```
-
+}</code>
 </p>
 </details>
 
@@ -1193,11 +1151,10 @@ In the response header the `HTTP status code` is `200 OK`.
 
 The response `body` contains an `array` of `artist` or `track` objects `wrapped` in a `paging object` in `JSON`.
 
-> [API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-users-top-artists-and-tracks)
+> [Top](#Table-of-Contents)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-users-top-artists-and-tracks)
 
-> [Top](#Table-of-Contents)
 
----
+--------------------------------------------------------------------------------
 
 ## License
 
