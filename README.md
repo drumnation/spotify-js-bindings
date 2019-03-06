@@ -93,6 +93,15 @@ You will receive a `JSON` `error` `object` with a `401` `unauthorized` message b
 
 --------------------------------------------------------------------------------
 
+### **User Profile API**
+
+--------------------------------------------------------------------------------
+
+1. [Get a User's Profile](#Get-a-User's-Profile)
+2. [Get Current User's Profile](#Get-Current-User's-Profile)
+
+--------------------------------------------------------------------------------
+
 ## Instructions
 
 ### About Query Arguments
@@ -1192,6 +1201,111 @@ In the response header the `HTTP status code` is `200 OK`.
 The response `body` contains an `array` of `artist` or `track` objects `wrapped` in a `paging object` in `JSON`.
 
 > [Top](#Table-of-Contents)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-users-top-artists-and-tracks)
+
+--------------------------------------------------------------------------------
+
+### **User Profile API**
+
+--------------------------------------------------------------------------------
+
+#### Get a User's Profile
+
+Get public profile information about a Spotify user.
+
+```javascript
+const userId = "smedjan";
+const response = await userProfile.getUserProfile(userId);
+```
+
+##### Response
+
+<details>
+  <summary>json</summary>
+  <p>
+
+```json
+{  
+  "display_name":"Lilla Namo",
+  "external_urls":{  
+    "spotify":"https://open.spotify.com/user/tuggareutangranser"
+  },
+  "followers":{  
+    "href":null,
+    "total":4561
+  },
+  "href":"https://api.spotify.com/v1/users/tuggareutangranser",
+  "id":"tuggareutangranser",
+  "images":[  
+    {  
+        "height":null,
+        "url":"http://profile-images.scdn.co/artists/default/d4f208d4d49c6f3e1363765597d10c4277f5b74f",
+        "width":null
+    }
+  ],
+  "type":"user",
+  "uri":"spotify:user:tuggareutangranser"
+}
+```
+</p>
+</details>
+
+In the response header the `HTTP status code` is `200 OK`.
+
+The response `body` contains a `user` object in `JSON`.
+
+> [Top](#Table-of-Contents)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-users-profile)
+
+--------------------------------------------------------------------------------
+
+#### Get Current User's Profile
+
+Get detailed profile information about the current user (including the current user’s username).
+
+```javascript
+const response = await userProfile.getCurrentUserProfile();
+```
+
+##### Response
+
+<details>
+  <summary>json</summary>
+  <p>
+
+```json
+{  
+  "birthdate":"1937-06-01",
+  "country":"SE",
+  "display_name":"JM Wizzler",
+  "email":"email@example.com",
+  "external_urls":{  
+    "spotify":"https://open.spotify.com/user/wizzler"
+  },
+  "followers":{  
+    "href":null,
+    "total":3829
+  },
+  "href":"https://api.spotify.com/v1/users/wizzler",
+  "id":"wizzler",
+  "images":[  
+    {  
+        "height":null,
+        "url":"https://fbcdn-profile-a.akamaihd.net/hprofile-ak-frc3/t1.0-1/1970403_10152215092574354_1798272330_n.jpg",
+        "width":null
+    }
+  ],
+  "product":"premium",
+  "type":"user",
+  "uri":"spotify:user:wizzler"a
+}
+```
+</p>
+</details>
+
+In the response header the `HTTP status code` is `200 OK`.
+
+The response `body` contains a `user` object in `JSON`.
+
+> [Top](#Table-of-Contents)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[API Docs](https://developer.spotify.com/documentation/web-api/reference-beta/#endpoint-get-current-users-profile)
 
 --------------------------------------------------------------------------------
 

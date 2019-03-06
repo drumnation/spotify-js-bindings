@@ -1,5 +1,5 @@
 import { spotifyFetch } from "../redux";
-import { urls, httpMethods } from "../config/personalization";
+import { urls, httpMethods } from "../config/userProfile";
 import bindActionCreators from "../helpers/actions";
 
 const getUserProfile = (userId, optional) => {

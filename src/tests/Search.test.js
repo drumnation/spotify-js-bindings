@@ -1,6 +1,5 @@
 import { search, setSpotifyToken } from "../index";
 import token from "../../token";
-import { isSuccessful } from "../helpers/conditionals";
 
 beforeAll(async () => {
   await setSpotifyToken(token);
